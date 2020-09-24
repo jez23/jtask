@@ -1,0 +1,98 @@
+.viewTicketModalContainer {
+    background-color:rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}
+.viewTicketModalInnerContainer{
+    background-color: white;
+    width: 60%;
+    margin: auto;
+    height: 100%; 
+}
+/* .onHoldModalContent{
+    display: grid;
+    grid-template-areas: 
+            ". closer closer closer closer closer ."
+            ". titleUser titleUser titleUser titleUser titleUser ."
+            ". user user user user user ."
+            ". add add add add add .";
+} */
+.viewTicketCloseButton {
+    justify-content: flex-end;
+    display: flex;
+}
+.summaryText{
+    margin-bottom: 10px;
+}
+.viewTicketCloseButton i {
+    cursor: pointer;
+    font-size: 30px;
+}
+.viewTicketModalContent{
+    padding: 20px;
+    height: 100%;
+    overflow: scroll;
+}
+.viewTicketModalContent hr {
+    margin-bottom: 20px;
+}
+.viewTicketModalContent h2, .viewTicketModalContent h3{
+    padding: 0px 0px 20px 0px;
+    text-transform: uppercase;
+}
+.viewTicketDetails{
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+.viewTicketModalContent p{
+    line-height: 30px;;
+}
+.viewTicketID{
+    margin-bottom: 20px;
+}
+.ticketSummary {
+    border: 1px solid black;
+    padding: 10px;
+    min-height: 40px;
+}
+.commentArea{
+    display: grid;
+}
+.commentArea textarea {
+    padding: 5px;
+    box-sizing: border-box;
+}
+.commentArea button{
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 40px;
+    background-color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.commentArea button:hover{
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+.commentContainer{
+    display: grid;
+    grid-template-columns: 20% 80%;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    padding: 20px;
+}
+.commentImage{
+    font-size: 40px;   
+    text-align: center;
+    align-self: center;
+}
+@media only screen and (max-width: 800px) {
+    .viewTicketModalInnerContainer{
+        width: 100%;
+        margin: auto; 
+    }
+}

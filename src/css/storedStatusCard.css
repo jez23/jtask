@@ -1,0 +1,47 @@
+.storedStatusCard{
+    border: 1px solid black;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.MoveDropDownContainer {
+    position: relative;
+}
+.storedStatusCard h3{
+    color: #284b63;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+.storedStatusCardMove{
+    position: absolute;
+    top: 43px;
+    left: 0px;
+    background-color: silver;
+    border: 1px solid black;
+    width: 100%;
+    z-index: 10;
+}
+.storedStatusCardMove li{
+    background-color: white;
+    line-height: 20px;
+    border: 1px solid black;
+    padding: 5px;
+    list-style: none;
+    color:black;
+    text-transform: uppercase;
+    text-align: center;
+}
+.storedStatusCardMove li:hover{
+    background-color: rgba(0,0,0, 0.5);
+    cursor: pointer;
+    color: white;
+}
+.changeStatusStored {
+    background-color: green;
+    border: 1px solid black;
+    padding: 10px;  
+    width: 100%;
+    margin: 10px 0px 10px 0px;
+    color: white;
+    text-transform: uppercase;
+}

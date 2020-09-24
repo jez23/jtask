@@ -1,0 +1,37 @@
+.sprintDropdown{
+    grid-area: sprintDropDown;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+.sprintDropdownContainer{
+    position: relative;
+}
+.sprintDropdownContent{
+    position: absolute;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    top: 36px;
+    right: 0px;
+    border: 1px solid black;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.sprintDropdownBtn {
+    border: 1px solid black;
+    padding: 10px;
+    width: 300px;
+    text-align: center;
+}
+.sprintDropdownBtn:hover{
+    background-color: grey;
+}
+
+@media only screen and (max-width: 800px) {
+    .sprintDropdown{
+       margin-top: 20px;
+    }
+}

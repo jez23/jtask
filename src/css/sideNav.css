@@ -1,0 +1,41 @@
+.sideNavContainer {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    z-index: 100;
+}
+.sideNavInnerContainer {
+    height: 100%;
+    width: 300px;
+    background-color: white;
+}
+.sideNav {
+    background-color: white;
+    display: grid;
+    grid-area: sideNav;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.sideNavClose{
+    display: flex;
+    justify-content: flex-end;
+    font-size: 30px;
+}
+.sideNavClose i {
+    cursor: pointer;
+}
+.sideNav__button {
+    cursor: pointer;
+    padding: 10px;
+    margin: 20px auto;
+    width: 80%;
+    border: 1px solid black;
+    text-transform: uppercase;
+    background-color: white;
+}
+.sideNav__button:hover {
+    background-color: rgba(0,0,0, 0.5);
+    color: white;
+}

@@ -1,0 +1,8 @@
+.mainContainer {
+    display: grid;
+    grid-template-areas: 
+            "dashBoard dashBoard dashBoard dashBoard dashBoard dashBoard  dashBoard  dashBoard dashBoard  dashBoard ";
+    grid-template-columns: repeat(10, 1fr);
+    position: relative;
+}
+

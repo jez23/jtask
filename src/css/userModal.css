@@ -1,0 +1,89 @@
+.userModalContainer {
+    background-color:rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}
+.userModalInnerContainer{
+    background-color: white;
+    width: 60%;
+    margin: auto;
+    height: 100%; 
+}
+.userModalContent{
+    display: grid;
+    grid-template-areas:
+        "closer closer closer closer closer"
+        "titleUser titleUser titleUser titleUser titleUser"
+        "user user user user user"
+        "add add add add add";
+    padding: 20px;
+    height: 100%;
+    overflow: scroll;
+    box-sizing: border-box;
+}
+.closeButton{
+    grid-area: closer;
+    justify-self: end;
+    font-size: 30px;
+}
+.closeButton i{
+    cursor: pointer;
+}
+.titleUser {
+    grid-area: titleUser;
+    padding: 20px 0px;
+}
+.user{
+    grid-area: user;
+    padding: 20px 0px;
+}
+.user ol li {
+    text-transform: uppercase;
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+.add{
+    grid-area: add;
+    margin-bottom: 40px;
+}
+.add input {
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+}
+.add button {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    text-transform: uppercase;
+    background-color: white;
+}
+.add button:hover {
+    background-color: rgba(0,0,0, 0.5);
+    color: white;
+}
+.addedUser {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    padding: 10px;
+    align-items: center;
+}
+.addUserMeta{
+    font-size: 20px;
+}
+.addUserImage {
+    font-size: 40px;
+    text-align: center;
+}
+@media only screen and (max-width: 800px) {
+    .userModalInnerContainer{
+        width: 100%;
+        margin: auto;
+    }
+}

@@ -1,0 +1,44 @@
+.backlogModalContainer {
+    background-color:rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}
+.backlogInnerContainer{
+    background-color: white;
+    width: 50%;
+    margin: auto;
+    height: 100%; 
+    padding: 20px;
+    overflow: scroll;
+    box-sizing: border-box;
+}
+.backlogInnerContainer h2 {
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+/* .onHoldModalContent{
+    display: grid;
+    grid-template-areas: 
+            ". closer closer closer closer closer ."
+            ". titleUser titleUser titleUser titleUser titleUser ."
+            ". user user user user user ."
+            ". add add add add add .";
+} */
+.backlogCloseButton {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.backlogCloseButton i {
+    cursor: pointer;
+}
+@media only screen and (max-width: 800px) {
+    .backlogInnerContainer{
+        width: 100%;
+        margin: auto; 
+    }
+}

@@ -1,0 +1,16 @@
+.searchWidget {
+    background-color: white;
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-areas: 
+                "search search search search search search sprintDropDown sprintDropDown";
+}
+
+@media only screen and (max-width: 800px) {
+    .searchWidget {
+        grid-template-areas: 
+                    "search search"
+                    "sprintDropDown sprintDropDown";
+    }
+
+}

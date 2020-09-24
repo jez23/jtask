@@ -1,0 +1,36 @@
+.statusCardContainer{
+    grid-column: span 2;
+}
+.statusCardContainer button{
+    cursor: pointer;
+    padding: 10px 10px;
+    text-transform: uppercase;
+    background-color: white;
+    width: 100%;
+    border: 1px solid black;
+}
+.statusCardContainer button:hover{
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.statusCardContainer h3 {
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.dashBoardStatusCard {
+    background-color:white;
+    padding: 20px;
+    grid-column: span 2;
+    border: 1px dashed black;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.dashBoardStatusCard h3 {
+    color: #284b63;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.dragging {
+    touch-action: none;
+}

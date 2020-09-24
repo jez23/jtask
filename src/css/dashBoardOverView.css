@@ -1,0 +1,41 @@
+.dashBoardOverView{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    padding: 20px;
+    grid-gap: 10px;
+}
+.modalButton {
+    padding: 10px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+.modalButton:hover {
+    background-color: lightgray;
+}
+
+@media only screen and (max-width: 1400px) {
+    .dashBoardOverView{
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+       
+        grid-gap: 10px;
+    } 
+}
+
+@media only screen and (max-width: 800px) {
+    .dashBoardOverView{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+      
+        grid-gap: 10px;
+    } 
+}
+
+@media only screen and (max-width: 600px) {
+    .dashBoardOverView{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      
+        grid-gap: 10px;
+    } 
+}

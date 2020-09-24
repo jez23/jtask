@@ -1,0 +1,14 @@
+.dashBoard {
+    display: grid;
+    background-color: white;
+    grid-area: dashBoard;
+    padding: 20px;
+}
+.dashBoard h1{
+    margin-left: 20px;
+    text-transform: uppercase;
+    color: #284b63;
+}
+.dashBoard h2{
+    color: #284b63;
+}

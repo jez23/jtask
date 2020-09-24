@@ -1,0 +1,53 @@
+.editModalContainer {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0px;
+    left: 0px;
+ }
+ .editModal {
+     background-color: white;
+     width: 60%;
+     height: 100%;
+     margin: auto;
+     padding: 20px;
+     overflow: scroll;
+     box-sizing: border-box;
+ }
+ .editModal form{
+    display: grid;
+     grid-template-columns: repeat(1, 1fr);
+     grid-gap: 10px;
+ }
+ .editModal input{
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.editModal select{
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.editModal label{
+    font-size: 20px;
+}
+.editModal h3 {
+    text-transform: uppercase;
+    font-size: 25px;
+    padding-bottom: 25px;
+    color: #284b63;
+}
+.editModalClose {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 30px;
+}
+.editModalClose i {
+    cursor: pointer;
+}
+@media only screen and (max-width: 800px) {
+    .editModal{
+        width: 100%;
+        margin: auto; 
+    }
+}
