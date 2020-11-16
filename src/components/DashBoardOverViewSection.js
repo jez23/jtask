@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState, useContext} from 'react';
 import DashBoardStatusCard from './DashBoardStatusCard';
 import Modal from './Modal';
 import EditModal from './EditModal';
@@ -6,6 +6,7 @@ import UserModal from './UserModal';
 import OnHoldModal from './OnHoldModal';
 import BacklogModal from './BacklogModal';
 import ViewTicketModal from './ViewTicketModal';
+import Context from '../contexts/Context';
 
 
 const lists = [
@@ -22,7 +23,7 @@ const lists = [
 function DashBoardOverView(props){
     const [draggable_id,setDraggable_id] = useState('')
 
- 
+    const { newTicketModal , editModal, viewTicketModal, sideNavUserState } = useContext(Context);
 
     return (
         <>
@@ -32,82 +33,40 @@ function DashBoardOverView(props){
                     <DashBoardStatusCard 
                         key={item.title} 
                         title={item.title} 
-                        color={item.color} 
-                        handleTicketEdit={props.handleTicketEdit} 
-                        ticketsWithState={props.ticketsWithState}
                         draggable_id={draggable_id}
                         onDrag = {setDraggable_id}
-                        editModalFunction={props.editModalFunction}
-                        newTicketFunction={props.newTicketFunction}
-                        viewTicketFunction={props.viewTicketFunction}
-                        selectedTicket={props.selectedTicket}
-                        handleTicketSelect={props.handleTicketSelect}
                     />
                 )
             }
             
         </div>
 
-        { props.newTicketModal && 
-            <Modal  
-            handleTicketAdd={props.handleTicketAdd}
-            ticketsWithState={props.ticketsWithState}
-            setEmptyTicketsFunction={props.setEmptyTicketsFunction}
-            emptyTicketsWithState={props.emptyTicketsWithState}
-            usersWithState={props.usersWithState}
-            newTicketFunction={props.newTicketFunction}
-        />}
+        { newTicketModal && 
+            <Modal  />}
         
         {
-            props.editModal  &&  
-            <EditModal
-                handleTicketAdd={props.handleTicketAdd}
-                ticketsWithState={props.ticketsWithState}
-                handleTicketEdit={props.handleTicketEdit}
-                selectedTicket={props.selectedTicket}
-                removeSelectedTicket={props.removeSelectedTicket}
-                usersWithState={props.usersWithState}
-                editModalFunction={props.editModalFunction}
-            />
+           editModal  &&  
+            <EditModal />
         }
         
-        { props.sideNavUserState &&
-            <UserModal
-            setUserFunction={props.setUserFunction}
-            usersWithState={props.usersWithState}
-            handleAddUser={props.handleAddUser}
-            setSideNavUserState={props.setSideNavUserState}
-        />}
+        { sideNavUserState &&
+            <UserModal />}
         
         { props.onHoldState &&
             <OnHoldModal 
-                 ticketsWithState={props.ticketsWithState}
                  setOnHoldState={props.setOnHoldState}
-                 handleTicketEdit={props.handleTicketEdit}
-                 selectedTicket={props.selectedTicket}
-                 handleTicketSelect={props.handleTicketSelect}
              />
         }
 
         { props.backLogState && 
             <BacklogModal 
-             ticketsWithState={props.ticketsWithState}
-             setBackLogState={props.setBackLogState}
-             handleTicketEdit={props.handleTicketEdit}
-             selectedTicket={props.selectedTicket}
-             handleTicketSelect={props.handleTicketSelect}
+                setBackLogState={props.setBackLogState}
         />}
 
         {
-            props.viewTicketModal
+           viewTicketModal
         && 
-            <ViewTicketModal 
-                selectedTicket={props.selectedTicket}
-                ticketsWithState={props.ticketsWithState}
-                removeSelectedTicket={props.removeSelectedTicket}
-                handleTicketEdit={props.handleTicketEdit} 
-                viewTicketFunction={props.viewTicketFunction}
-            />
+            <ViewTicketModal />
         }    
 
         </>

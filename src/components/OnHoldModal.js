@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import StoredStatusCard from './StoredStatusCard';
+import Context from '../contexts/Context';
+
 
 function OnHoldModal(props){
 
-
+    const {  ticketsWithState } = useContext(Context);
     return (
 
         <div className="onHoldModalContainer" onClick={() => props.setOnHoldState(false)}>
@@ -13,12 +15,9 @@ function OnHoldModal(props){
                         <i className="fa fa-window-close" aria-hidden="true" onClick={() => props.setOnHoldState(false)}></i>
                     </div>
                     <h2><i class="fa fa-hourglass-end" aria-hidden="true"></i> Tickets On Hold</h2>
-                    {props.ticketsWithState.filter(ticket=>ticket.status==="On Hold").map( el => (
+                    { ticketsWithState.filter(ticket=>ticket.status==="On Hold").map( el => (
                         <StoredStatusCard 
                             key={el.id} {...el}
-                            selectedTicket={props.selectedTicket}
-                            handleTicketSelect={props.handleTicketSelect}
-                            handleTicketEdit={props.handleTicketEdit}
                         ></StoredStatusCard>
                     ))}
                 </div>

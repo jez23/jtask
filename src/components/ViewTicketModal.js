@@ -1,45 +1,47 @@
-import React, { useRef } from 'react';
+import React, { useRef, useContext } from 'react';
+import Context from '../contexts/Context';
+
 
 function ViewTicketModal(props){
 
+    const { selectedTicket , handleTicketEdit , viewTicketFunction , removeSelectedTicket } = useContext(Context);
    
     function handleChange(changes){
         
-        props.selectedTicket.comments.push(changes)
-        let select = props.selectedTicket;
+        selectedTicket.comments.push(changes)
+        let select = selectedTicket;
         textareaRef.current.value = ""
-      //  test.value = "";
-       props.handleTicketEdit(select.id, select)
+        handleTicketEdit(select.id, select)
     }
     let textareaRef = useRef();
    
     return (
-      <div className="viewTicketModalContainer" onClick={(e) => props.viewTicketFunction(false)}>
+      <div className="viewTicketModalContainer" onClick={(e) => viewTicketFunction(false)}>
         <div className="viewTicketModalInnerContainer"  onClick={(e) => e.stopPropagation()}>
             <div className="viewTicketModalContent">
-                <div className='viewTicketCloseButton' onClick={props.removeSelectedTicket}>
-                    <i className="fa fa-window-close" aria-hidden="true" onClick={() => props.viewTicketFunction(false)}></i>
+                <div className='viewTicketCloseButton' onClick={removeSelectedTicket}>
+                    <i className="fa fa-window-close" aria-hidden="true" onClick={() => viewTicketFunction(false)}></i>
                 </div>
-                    <h2>{props.selectedTicket.title}</h2>
-                    <p className="viewTicketID"><i className="fa fa-id-badge" aria-hidden="true"></i> {props.selectedTicket.id}</p>
+                    <h2>{selectedTicket.title}</h2>
+                    <p className="viewTicketID"><i className="fa fa-id-badge" aria-hidden="true"></i> {selectedTicket.id}</p>
                     <hr />
                     <h3><i className="fa fa-info-circle" aria-hidden="true"></i> Details:</h3>
                     <div className="viewTicketDetails">
-                        <p><strong>TYPE:</strong> {props.selectedTicket.type}</p>
-                        <p><strong>PRIORITY:</strong> {props.selectedTicket.priority}</p>
-                        <p><strong>STATUS:</strong> {props.selectedTicket.status}</p>
-                        <p><strong>ASSIGNEE:</strong> {props.selectedTicket.assignedTo}</p>
-                        <p><strong>STORY POINTS:</strong> {props.selectedTicket.points}</p>
+                        <p><strong>TYPE:</strong> {selectedTicket.type}</p>
+                        <p><strong>PRIORITY:</strong> {selectedTicket.priority}</p>
+                        <p><strong>STATUS:</strong> {selectedTicket.status}</p>
+                        <p><strong>ASSIGNEE:</strong> {selectedTicket.assignedTo}</p>
+                        <p><strong>STORY POINTS:</strong> {selectedTicket.points}</p>
                     </div>
                     <hr />
                     <h3><i className="fa fa-commenting-o" aria-hidden="true"></i> Description:</h3>
-                    <p className="summaryText">{props.selectedTicket.summary}</p>
+                    <p className="summaryText">{selectedTicket.summary}</p>
                     <hr />
                     <h3><i className="fa fa-comments" aria-hidden="true"></i> Comments:</h3>
                     <div className="commentArea">
-                        {props.selectedTicket.comments.map(element => {
+                        {selectedTicket.comments.map(element => {
                                return (
-                                        <div className="commentContainer">
+                                        <div className="commentContainer" key={selectedTicket.id + Math.random()}>
                                             <div className="commentImage">
                                                     <i className="fa fa-user-circle" aria-hidden="true"></i>
                                             </div>    

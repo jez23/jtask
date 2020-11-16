@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import Context from '../contexts/Context';
 
 function EditModal(props){
    
+
+    const { selectedTicket , handleTicketEdit , usersWithState , editModalFunction } = useContext(Context);
+
+
     function handleChange(changes){
-          props.handleTicketEdit(props.selectedTicket.id,  {...props.selectedTicket, ...changes})
+        handleTicketEdit(selectedTicket.id,  {...selectedTicket, ...changes})
     }
 
     function closeEditModal(e){
        // e.preventDefault();
-        props.editModalFunction(false);
+       editModalFunction(false);
     }
     return (
         <div className="editModalContainer" onClick={() => closeEditModal()}>
@@ -16,27 +21,27 @@ function EditModal(props){
                 <div className="editModalClose">
                      <i className="fa fa-window-close" aria-hidden="true" onClick={() => closeEditModal()}></i>
                 </div>
-                <h3><i class="fa fa-pencil" aria-hidden="true"></i> Edit TASK</h3>
+                <h3><i className="fa fa-pencil" aria-hidden="true"></i> Edit TASK</h3>
                 <form>
-                <label htmlfor="editTitle">Edit Title</label>
-                <input id="editTitle" type="text" placeholder="Title" value={props.selectedTicket.title} onChange={e => handleChange({title: e.target.value})} required/>
-                <label htmlfor="editSummary">Edit Summary</label>
-                <input id="editSummary" type="text" placeholder="Summary" value={props.selectedTicket.summary} onChange={e => handleChange({summary: e.target.value})}/>
-                <label htmlfor="editType">Edit Type</label>
+                <label htmlFor="editTitle">Edit Title</label>
+                <input id="editTitle" type="text" placeholder="Title" value={selectedTicket.title} onChange={e => handleChange({title: e.target.value})} required/>
+                <label htmlFor="editSummary">Edit Summary</label>
+                <input id="editSummary" type="text" placeholder="Summary" value={selectedTicket.summary} onChange={e => handleChange({summary: e.target.value})}/>
+                <label htmlFor="editType">Edit Type</label>
                 <select id="editType" onChange={e => handleChange({type: e.target.value})}>
                         <option value="Bug">Bug</option>
                         <option value="Improvement">Improvement</option>
                         <option value="New Feature">New Feature</option>
                         <option value="Task">Task</option>
                 </select>    
-                <label htmlfor="editPriority">Edit Priority</label>
+                <label htmlFor="editPriority">Edit Priority</label>
                 <select id="editPriority" onChange={e => handleChange({priority: e.target.value})}>
                         <option value="Low">Low</option>
                         <option value="Medium">Medium</option>
                         <option value="High">High</option>
                         <option value="Blocker">Blocker</option>
                 </select>
-                <label htmlfor="editPoints">Edit Story Points</label>
+                <label htmlFor="editPoints">Edit Story Points</label>
                 <select placeholder="Points" onChange={e => handleChange({ points: e.target.value})}>
                         <option value="0.5">0.5</option>
                         <option value="1">1</option>
@@ -51,7 +56,7 @@ function EditModal(props){
                 </select>
                 <label htmlFor="editAssignee">Edit Assignee</label>
                 <select id="editAssignee" onChange={e => handleChange({assignedTo: e.target.value})}>
-                       { props.usersWithState.map(el => (
+                       { usersWithState.map(el => (
                            <option value={el} key={el}>{el}</option>
                        ))}
                 </select>

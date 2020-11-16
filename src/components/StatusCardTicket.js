@@ -1,6 +1,13 @@
-import React, { useRef, useState} from "react";
+import React, { useRef, useState, useContext} from "react";
+import Context from '../contexts/Context';
+
+
+
+
 
 function StatusCardTicket(props){
+
+    const { selectedTicket , handleTicketEdit , handleTicketSelect, viewTicketFunction , editModalFunction } = useContext(Context);
  
     const date = new Date();
     const getYear = date.getFullYear();
@@ -8,7 +15,7 @@ function StatusCardTicket(props){
         props.onDrag(props.id)
     }
     function handleChange(changes){
-        props.handleTicketEdit(props.id,  {...props.selectedTicket, ...changes})
+        handleTicketEdit(props.id,  {...selectedTicket, ...changes})
     }
     const statusButton = useRef();
     const [drop, dropFunction] = useState(false)
@@ -16,15 +23,15 @@ function StatusCardTicket(props){
              dropFunction(status)
     }
     function editModal(){
-        props.handleTicketSelect(props.id);
-        props.editModalFunction(true);
+        handleTicketSelect(props.id);
+        editModalFunction(true);
     }
     function viewTicket(){
-        props.handleTicketSelect(props.id);
-        props.viewTicketFunction(true);
+        handleTicketSelect(props.id);
+        viewTicketFunction(true);
     }
     function selectTicketOnHover(){
-        props.handleTicketSelect(props.id);
+        handleTicketSelect(props.id);
         statusDropDown(true);
     }
     function handleOnHold(){

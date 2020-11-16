@@ -1,28 +1,30 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import Context from '../contexts/Context';
 
 function SideNav(props) {
-   
+    const { setSideBarState, setSideNavUserState } = useContext(Context);
+
     function showUserModal(){
-        props.setSideBarState(false);
-        props.setSideNavUserState(true);
+        setSideBarState(false);
+        setSideNavUserState(true);
     }
     function showOnHoldModal(){
-        props.setSideBarState(false);
+        setSideBarState(false);
         props.setOnHoldState(true);
     }
     function showBackLog(){
-        props.setSideBarState(false);
+        setSideBarState(false);
         props.setBackLogState(true)
     }
     return (
-        <div className="sideNavContainer" onClick={() => props.setSideBarState(false)}>
+        <div className="sideNavContainer" onClick={() => setSideBarState(false)}>
             <div className="sideNavInnerContainer" onClick={(e) => e.stopPropagation()}>
                 <div className="sideNav">
                     <div className="sideNavClose">
-                        <i className="fa fa-window-close" aria-hidden="true" onClick={() => props.setSideBarState(false)}></i>
+                        <i className="fa fa-window-close" aria-hidden="true" onClick={() => setSideBarState(false)}></i>
                     
                     </div>
-                    <button className="sideNav__button" onClick={() => props.setSideBarState(false)}>Dash Board</button>
+                    <button className="sideNav__button" onClick={() => setSideBarState(false)}>Dash Board</button>
                     <button className="sideNav__button" onClick={() => showUserModal()}>User</button>
                     <button className="sideNav__button" onClick={() => showOnHoldModal()}>On Hold</button>
                     <button className="sideNav__button" onClick={() => showBackLog()}>Back Log</button>          

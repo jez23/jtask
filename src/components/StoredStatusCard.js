@@ -1,21 +1,19 @@
-import React, { useState } from 'react';
-
+import React, { useState, useContext } from 'react';
+import Context from '../contexts/Context';
 
 function StoredStatusCard(props){
 
+
+    const {  selectedTicket, handleTicketEdit, handleTicketSelect } = useContext(Context);
+
     function handleChange(changes){
-        props.handleTicketEdit(props.selectedTicket.id,  {...props.selectedTicket, ...changes})
+        handleTicketEdit(selectedTicket.id,  {...selectedTicket, ...changes})
     }
 
     function setSelectedTicket(){
         setNewStatusShow(true);
-        props.handleTicketSelect(props.id);
+        handleTicketSelect(props.id);
     }
-
-
-    
-
-
 
     const [newStatusShow, setNewStatusShow] = useState(false);
     return (
