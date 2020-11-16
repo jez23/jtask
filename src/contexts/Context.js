@@ -4,7 +4,6 @@ import { v4 as uuidv4 } from 'uuid';
 
 const Context = React.createContext();
 
-
 export function ConstProvider({children}){
   const [emptyTicketsWithState, setEmptyTicketsFunction] = useState(emptyTicket);
   const [selectedTicketId, setSelectedTicketIdFunction] = useState();
@@ -16,6 +15,8 @@ export function ConstProvider({children}){
   const [newTicketModal, newTicketFunction] = useState(false);
   const [viewTicketModal, viewTicketFunction] = useState(false);
   const [sideBarState, setSideBarState] = useState(false);
+  const [onHoldState, setOnHoldState] = useState(false);
+  const [backLogState, setBackLogState] = useState(false);
   
   function handleTicketAdd(newObject){
     const newTicket = {
@@ -76,7 +77,11 @@ export function ConstProvider({children}){
       editModal,
       setEmptyTicketsFunction,
       setSideNavUserState,
-      selectedTicket
+      selectedTicket,
+      onHoldState,
+      setOnHoldState,
+      backLogState,
+      setBackLogState
     }}>
       {children}
     </Context.Provider>

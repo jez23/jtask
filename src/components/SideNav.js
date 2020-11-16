@@ -2,7 +2,10 @@ import React, { useContext } from 'react';
 import Context from '../contexts/Context';
 
 function SideNav(props) {
-    const { setSideBarState, setSideNavUserState } = useContext(Context);
+    const { setSideBarState,
+            setSideNavUserState,
+            setOnHoldState,
+            setBackLogState} = useContext(Context);
 
     function showUserModal(){
         setSideBarState(false);
@@ -10,11 +13,11 @@ function SideNav(props) {
     }
     function showOnHoldModal(){
         setSideBarState(false);
-        props.setOnHoldState(true);
+        setOnHoldState(true);
     }
     function showBackLog(){
         setSideBarState(false);
-        props.setBackLogState(true)
+        setBackLogState(true)
     }
     return (
         <div className="sideNavContainer" onClick={() => setSideBarState(false)}>

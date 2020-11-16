@@ -5,7 +5,6 @@ import TopNav from './TopNav';
 
 function Header(props){
 
-
     return (
         <div className="header">
             <div className="header__topNav">

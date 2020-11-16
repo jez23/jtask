@@ -19,11 +19,17 @@ const lists = [
 ]
 
 
-
 function DashBoardOverView(props){
     const [draggable_id,setDraggable_id] = useState('')
 
-    const { newTicketModal , editModal, viewTicketModal, sideNavUserState } = useContext(Context);
+    const { newTicketModal,
+            editModal,
+            viewTicketModal,
+            sideNavUserState ,
+            onHoldState,
+            setOnHoldState,
+            backLogState,
+            setBackLogState} = useContext(Context);
 
     return (
         <>
@@ -37,42 +43,31 @@ function DashBoardOverView(props){
                         onDrag = {setDraggable_id}
                     />
                 )
-            }
-            
+            }      
         </div>
-
         { newTicketModal && 
-            <Modal  />}
-        
+            <Modal  />}    
         {
            editModal  &&  
             <EditModal />
-        }
-        
+        }     
         { sideNavUserState &&
             <UserModal />}
-        
-        { props.onHoldState &&
+        { onHoldState &&
             <OnHoldModal 
-                 setOnHoldState={props.setOnHoldState}
+                 setOnHoldState={setOnHoldState}
              />
         }
-
-        { props.backLogState && 
+        { backLogState && 
             <BacklogModal 
-                setBackLogState={props.setBackLogState}
+                setBackLogState={setBackLogState}
         />}
-
         {
            viewTicketModal
         && 
             <ViewTicketModal />
         }    
-
-        </>
-
-
-           
+        </>          
     )
 }
 

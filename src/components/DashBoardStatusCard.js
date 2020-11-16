@@ -5,18 +5,13 @@ import Context from '../contexts/Context';
 
 function DashBoardStatusCard(props){
 
-
   const { ticketsWithState, handleTicketEdit, newTicketFunction } = useContext(Context);
 
-
-     /*https://www.youtube.com/watch?v=jfYWwQrtzzY */
      const dragOver = useCallback( () => {
-       // console.log(props.title, props.draggable_id)
           handleChange(props.title, props.draggable_id) 
         },
         [props.title, props.draggable_id],
       );
-  
   
     function handleChange(changes, id){
          
@@ -25,7 +20,6 @@ function DashBoardStatusCard(props){
         ticket.status = changes;
         handleTicketEdit(id,  ticket)
       } 
-
 
       function newTicket(){
         newTicketFunction(true)
@@ -39,8 +33,6 @@ function DashBoardStatusCard(props){
              
               
                   {
-
-                  
                     ticketsWithState.filter(ticket=>ticket.status===props.title).map(ticket => 
                       <StatusCardTicket 
                         {...ticket} 

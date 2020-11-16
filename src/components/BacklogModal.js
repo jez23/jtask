@@ -13,7 +13,7 @@ function BacklogModal(props){
                 <div className='backlogCloseButton'>
                     <i className="fa fa-window-close" aria-hidden="true" onClick={() =>  props.setBackLogState(false)}></i>
                 </div>
-                <h2><i class="fa fa-calculator" aria-hidden="true"></i> Tickets in the Backlog</h2>
+                <h2><i className="fa fa-calculator" aria-hidden="true"></i> Tickets in the Backlog</h2>
                 {ticketsWithState.filter(ticket=>ticket.status==="Backlog").map( el => (    
                         <StoredStatusCard 
                             key={el.id} {...el}

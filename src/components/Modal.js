@@ -3,7 +3,11 @@ import Context from '../contexts/Context';
 
 function Modal(props){
 
-    const { handleTicketAdd, newTicketFunction , usersWithState , emptyTicketsWithState , setEmptyTicketsFunction } = useContext(Context);
+    const { handleTicketAdd, 
+            newTicketFunction , 
+            usersWithState, 
+            emptyTicketsWithState, 
+            setEmptyTicketsFunction } = useContext(Context);
   
    function saveButton(e){
       // e.preventDefault();

@@ -14,7 +14,7 @@ function OnHoldModal(props){
                     <div className='onHoldcloseButton'>
                         <i className="fa fa-window-close" aria-hidden="true" onClick={() => props.setOnHoldState(false)}></i>
                     </div>
-                    <h2><i class="fa fa-hourglass-end" aria-hidden="true"></i> Tickets On Hold</h2>
+                    <h2><i className="fa fa-hourglass-end" aria-hidden="true"></i> Tickets On Hold</h2>
                     { ticketsWithState.filter(ticket=>ticket.status==="On Hold").map( el => (
                         <StoredStatusCard 
                             key={el.id} {...el}

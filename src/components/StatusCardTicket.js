@@ -1,13 +1,13 @@
 import React, { useRef, useState, useContext} from "react";
 import Context from '../contexts/Context';
 
-
-
-
-
 function StatusCardTicket(props){
 
-    const { selectedTicket , handleTicketEdit , handleTicketSelect, viewTicketFunction , editModalFunction } = useContext(Context);
+    const { selectedTicket,
+            handleTicketEdit,
+            handleTicketSelect,
+            viewTicketFunction,
+            editModalFunction } = useContext(Context);
  
     const date = new Date();
     const getYear = date.getFullYear();
