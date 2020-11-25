@@ -1,30 +1,33 @@
 import React, { useContext } from 'react';
-import Context from '../contexts/Context';
+import { useHistory } from 'react-router-dom';
+
+import Context from '../../contexts/Context';
 
 function Modal(props){
 
+    const history = useHistory(); 
+
     const { handleTicketAdd, 
-            newTicketFunction , 
+           /*  newTicketFunction ,  */
             usersWithState, 
             emptyTicketsWithState, 
             setEmptyTicketsFunction } = useContext(Context);
   
    function saveButton(e){
-      // e.preventDefault();
       handleTicketAdd(emptyTicketsWithState);
-      newTicketFunction(false);
+      history.push('/')
    }
  
     return (
-        <div className="modalContainer" onClick={() => newTicketFunction(false)}>
-            <div className="modal" onClick={(e) => e.stopPropagation()}>
-                <div className="modalCloserButton">
+        <div className="containerNewTicket">
+            <div className="modal">
+             {/*    <div className="modalCloserButton">
                     <i className="fa fa-window-close" aria-hidden="true" onClick={() => newTicketFunction(false)}></i>
-                </div>
+                </div> */}
                 <h3><i className="fa fa-file-text-o" aria-hidden="true"></i> Create a new task</h3>
-                <form>
+                <form onSubmit={(e) => saveButton(e)}>
                     <label htmlFor="title">Title</label>
-                    <input id="title" type="text" placeholder="Title" value={emptyTicketsWithState.title} onChange={e => setEmptyTicketsFunction({...emptyTicketsWithState, title: e.target.value})} required/>
+                    <input required id="title" type="text" placeholder="Title" value={emptyTicketsWithState.title} onChange={e => setEmptyTicketsFunction({...emptyTicketsWithState, title: e.target.value})} required/>
                     <label htmlFor="summary">Summary</label>
                     <input id="Summary" type="text" placeholder="summary" value={emptyTicketsWithState.summary} onChange={e => setEmptyTicketsFunction({...emptyTicketsWithState, summary: e.target.value})}/>
                     <label htmlFor="type">Type</label>
@@ -57,12 +60,12 @@ function Modal(props){
                    <label htmlFor="assignee">Assignee</label>
                    <select id="assignee" onChange={e => setEmptyTicketsFunction({...emptyTicketsWithState, assignedTo: e.target.value})}>
                        { usersWithState.map(el => (
-                           <option value={el} key={el}>{el}</option>
+                           <option value={el.firstname} key={el.id}>{el.firstname}</option>
                        ))}
                     </select>
                     <label htmlFor="status">Status</label>
                     <select id="status" onChange={e => setEmptyTicketsFunction({...emptyTicketsWithState, status: e.target.value})} required>
-                        <option value="New">Change Status</option>
+                        <option value="">Choose Status</option>
                         <option value="New">New</option>
                         <option value="Open">Open</option>
                         <option value="In Progress">In Progress</option>
@@ -70,7 +73,7 @@ function Modal(props){
                         <option value="Verified">Verified</option>
                         <option value="Closed">Closed</option>
                     </select>
-                    <button type="sumbit" className="modalSave" onClick={(e) => saveButton(e)}>Save</button>
+                    <button type="sumbit" className="modalSave">Save</button>
                 </form>
             </div>
         </div>

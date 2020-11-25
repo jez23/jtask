@@ -1,13 +1,14 @@
 import React, { useRef, useState, useContext} from "react";
 import Context from '../contexts/Context';
+import { Link } from 'react-router-dom';
 
 function StatusCardTicket(props){
 
     const { selectedTicket,
             handleTicketEdit,
             handleTicketSelect,
-            viewTicketFunction,
-            editModalFunction } = useContext(Context);
+          /*   viewTicketFunction, */
+        /*     editModalFunction */ } = useContext(Context);
  
     const date = new Date();
     const getYear = date.getFullYear();
@@ -24,11 +25,11 @@ function StatusCardTicket(props){
     }
     function editModal(){
         handleTicketSelect(props.id);
-        editModalFunction(true);
+     /*    editModalFunction(true); */
     }
     function viewTicket(){
         handleTicketSelect(props.id);
-        viewTicketFunction(true);
+        /* viewTicketFunction(true); */
     }
     function selectTicketOnHover(){
         handleTicketSelect(props.id);
@@ -54,10 +55,11 @@ function StatusCardTicket(props){
             </div>
             <div className="statusCardTicket__nav">
                     <div className="viewTicket">
-                        <i className="fa fa-eye" aria-hidden="true" onClick={() => viewTicket()}></i>
+                        <Link to="/ViewTicket" onClick={() => viewTicket()}><i className="fa fa-eye" /* aria-hidden="true" */></i></Link>
+                       
                     </div>
                     <div className="editTicket">
-                        <i className="fa fa-pencil" aria-hidden="true" onClick={() => editModal()}></i>
+                        <Link to="/editticket" onClick={() => editModal()}><i className="fa fa-pencil" /* aria-hidden="true" */></i></Link>
                     </div>
                     <div className="archiveButton" onMouseEnter={() => selectTicketOnHover()} onTouchStart={() => selectTicketOnHover()} onMouseLeave={(e) => statusDropDown(false, e)} onTouchCancel={(e) => statusDropDown(false, e)}>
                         <i className="fa fa-archive" aria-hidden="true"></i>

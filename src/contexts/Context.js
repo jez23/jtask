@@ -17,7 +17,17 @@ export function ConstProvider({children}){
   const [sideBarState, setSideBarState] = useState(false);
   const [onHoldState, setOnHoldState] = useState(false);
   const [backLogState, setBackLogState] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
   
+
+const showSearchResultsOnPage = () => {
+    const results = ticketsWithState.filter( (ticket) => {
+          return ticket.title.toLowerCase().includes(searchTerm.toLowerCase()) || ticket.id.toLowerCase().includes(searchTerm.toLowerCase());
+    })
+    console.log(results)
+    return results;
+}
+
   function handleTicketAdd(newObject){
     const newTicket = {
         id : uuidv4(),
@@ -52,7 +62,12 @@ export function ConstProvider({children}){
       setSelectedTicketIdFunction(null);
   }
   function handleAddUser(newUser){
+console.log(newUser)
+  
     setUserFunction([...usersWithState, newUser])
+console.log([...usersWithState, newUser])
+    debugger 
+    
   } 
 
 
@@ -81,7 +96,10 @@ export function ConstProvider({children}){
       onHoldState,
       setOnHoldState,
       backLogState,
-      setBackLogState
+      setBackLogState,
+      searchTerm,
+      setSearchTerm,
+      showSearchResultsOnPage
     }}>
       {children}
     </Context.Provider>
@@ -350,7 +368,43 @@ const tickets = [
     comments: []
   }
   
-  const users = ["Admin", "Emily", "Mark", "John", "Sarah"];
+  const users = [
+    {
+      id: uuidv4(),
+      firstname: "Admin",
+      lastname: '',
+      jobTitle: '',
+      email: 'Admin@company.com'
+    },
+    {
+      id: uuidv4(),
+      firstname: "Emily",
+      lastname: '',
+      jobTitle: '',
+      email: 'Emily@company.com'
+    },
+    {
+      id: uuidv4(),
+      firstname: "Mark",
+      lastname: '',
+      jobTitle: '',
+      email: 'Mark@company.com'
+    },
+    {
+      id: uuidv4(),
+      firstname: "John",
+      lastname: '',
+      jobTitle: '',
+      email: 'John@company.com'
+    },
+    {
+      id: uuidv4(),
+      firstname: "Sarah",
+      lastname: '',
+      jobTitle: '',
+      email: 'Sarah@company.com'
+    }
+  ];
   
   
   

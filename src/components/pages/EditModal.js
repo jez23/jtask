@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import Context from '../contexts/Context';
+import Context from '../../contexts/Context';
 
 function EditModal(props){
    
@@ -12,15 +12,15 @@ function EditModal(props){
     }
 
     function closeEditModal(e){
-       // e.preventDefault();
-       editModalFunction(false);
+       e.preventDefault();
+      /*  editModalFunction(false); */
     }
     return (
         <div className="editModalContainer" onClick={() => closeEditModal()}>
             <div className="editModal" onClick={(e) => e.stopPropagation()}>
-                <div className="editModalClose">
+            {/*     <div className="editModalClose">
                      <i className="fa fa-window-close" aria-hidden="true" onClick={() => closeEditModal()}></i>
-                </div>
+                </div> */}
                 <h3><i className="fa fa-pencil" aria-hidden="true"></i> Edit TASK</h3>
                 <form>
                 <label htmlFor="editTitle">Edit Title</label>
@@ -57,7 +57,7 @@ function EditModal(props){
                 <label htmlFor="editAssignee">Edit Assignee</label>
                 <select id="editAssignee" onChange={e => handleChange({assignedTo: e.target.value})}>
                        { usersWithState.map(el => (
-                           <option value={el} key={el}>{el}</option>
+                           <option value={el.firstname} key={el.id}>{el.firstname}</option>
                        ))}
                 </select>
                 <label htmlFor="editStatus">Edit Status</label>

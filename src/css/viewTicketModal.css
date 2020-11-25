@@ -1,40 +1,19 @@
 .viewTicketModalContainer {
-    background-color:rgba(0, 0, 0, 0.5);
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0px;
-    left: 0px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas: 
+            ". viewTicket viewTicket viewTicket ."; 
+ 
 }
 .viewTicketModalInnerContainer{
-    background-color: white;
-    width: 60%;
-    margin: auto;
-    height: 100%; 
-}
-/* .onHoldModalContent{
-    display: grid;
-    grid-template-areas: 
-            ". closer closer closer closer closer ."
-            ". titleUser titleUser titleUser titleUser titleUser ."
-            ". user user user user user ."
-            ". add add add add add .";
-} */
-.viewTicketCloseButton {
-    justify-content: flex-end;
-    display: flex;
+    grid-area: viewTicket;
 }
 .summaryText{
     margin-bottom: 10px;
 }
-.viewTicketCloseButton i {
-    cursor: pointer;
-    font-size: 30px;
-}
 .viewTicketModalContent{
     padding: 20px;
-    height: 100%;
-    overflow: scroll;
+
 }
 .viewTicketModalContent hr {
     margin-bottom: 20px;

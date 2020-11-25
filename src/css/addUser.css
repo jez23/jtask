@@ -1,0 +1,13 @@
+.addUserDetails{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas:
+    ". userFrom userFrom userFrom .";
+}
+.addUserDetails__form{
+    grid-area: userFrom;
+    display: grid;
+}
+.addUserDetails__form__input {
+    display: grid;
+}

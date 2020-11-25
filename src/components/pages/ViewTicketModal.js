@@ -1,6 +1,5 @@
 import React, { useRef, useContext } from 'react';
-import Context from '../contexts/Context';
-
+import Context from '../../contexts/Context';
 
 function ViewTicketModal(props){
 
@@ -16,12 +15,12 @@ function ViewTicketModal(props){
     let textareaRef = useRef();
    
     return (
-      <div className="viewTicketModalContainer" onClick={(e) => viewTicketFunction(false)}>
-        <div className="viewTicketModalInnerContainer"  onClick={(e) => e.stopPropagation()}>
+      <div className="viewTicketModalContainer">
+        <div className="viewTicketModalInnerContainer">
             <div className="viewTicketModalContent">
-                <div className='viewTicketCloseButton' onClick={removeSelectedTicket}>
+             {/*    <div className='viewTicketCloseButton' onClick={removeSelectedTicket}>
                     <i className="fa fa-window-close" aria-hidden="true" onClick={() => viewTicketFunction(false)}></i>
-                </div>
+                </div> */}
                     <h2>{selectedTicket.title}</h2>
                     <p className="viewTicketID"><i className="fa fa-id-badge" aria-hidden="true"></i> {selectedTicket.id}</p>
                     <hr />

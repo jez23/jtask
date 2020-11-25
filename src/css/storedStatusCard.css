@@ -1,7 +1,26 @@
 .storedStatusCard{
     border: 1px solid black;
-    padding: 10px;
     margin-bottom: 10px;
+}
+.storedStatusCard__info{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas: 
+            " storedMeta storedMeta storedMeta storedMeta storedMeta storedOption";
+}
+.storedMeta {
+    grid-area: storedMeta;
+}
+.storedOption{
+    grid-area: storedOption;
+}
+.storedOption__nav {
+    display: grid;
+    justify-content: center;
+    align-content: space-evenly;
+    background-color: #284b63;
+    color: white;
+    height: 100%;
 }
 .MoveDropDownContainer {
     position: relative;
@@ -41,7 +60,7 @@
     border: 1px solid black;
     padding: 10px;  
     width: 100%;
-    margin: 10px 0px 10px 0px;
+    margin: 0px 0px 0px 0px;
     color: white;
     text-transform: uppercase;
 }

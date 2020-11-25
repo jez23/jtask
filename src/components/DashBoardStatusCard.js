@@ -1,6 +1,9 @@
 import React, {useCallback, useContext} from 'react';
+import { Link } from 'react-router-dom';
+
 import StatusCardTicket from './StatusCardTicket';
 import Context from '../contexts/Context';
+
 
 
 function DashBoardStatusCard(props){
@@ -44,7 +47,7 @@ function DashBoardStatusCard(props){
   
               
               </div>
-              <button onClick={() => newTicket()} /* className="modalButton" */>Add new ticket</button>
+              <Link to="/newticket" onClick={() => newTicket()} /* className="modalButton" */>Add new ticket</Link>
           </div>
       )
   }
