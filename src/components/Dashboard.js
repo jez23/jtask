@@ -34,7 +34,7 @@ function Dashboard(props){
             <Route path="/users/add" component={AddUser} />
             <Route path="/user/edit" component={EditUser} />
             <Route path="/user/view" component={ViewUser}  /> 
-            <Route component={Error404}  /> 
+            <Route component={DashBoardOverViewSection}  /> 
         </Switch>
         </div>
     )
