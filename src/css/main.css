@@ -14,8 +14,10 @@
 @import './statusCardTicket.css';
 @import './userModal.css';
 @import './addUser.css';
+@import './viewUser.css';
 @import './onHoldModal.css';
 @import './backlogModal.css';
 @import './viewTicketModal.css';
 @import './storedStatusCard.css';
 @import './display.css';
+@import './error404.css';

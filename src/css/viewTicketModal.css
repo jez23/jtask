@@ -52,6 +52,7 @@
     background-color: white;
     text-transform: uppercase;
     cursor: pointer;
+    transition: all .5s ease-in-out;
 }
 .commentArea button:hover{
     background-color: rgba(0, 0, 0, 0.5);

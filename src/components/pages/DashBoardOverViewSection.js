@@ -28,7 +28,9 @@ function DashBoardOverView(props){
 
     return (
         <>
+         <h1><i class="fa fa-list-alt" aria-hidden="true"></i> Sprint Dashboard</h1>
         <div className="dashBoardOverView">
+           
             {
                 lists.map(item=>
                     <DashBoardStatusCard 

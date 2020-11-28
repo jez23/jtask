@@ -1,8 +1,6 @@
 import React from 'react';
-import {Route } from 'react-router-dom';
+import {Route, Switch } from 'react-router-dom';
 
-
-import SearchWidget from './SearchWidget';
 import Header from './Header';
 import DashBoardOverViewSection from './pages/DashBoardOverViewSection';
 import Modal from './pages/Modal';
@@ -13,6 +11,9 @@ import ViewTicketModal from './pages/ViewTicketModal';
 import UserModal from './pages/UserModal';
 import SearchResults from './pages/SearchResults';
 import AddUser from './pages/AddUser';
+import EditUser from './pages/EditUser';
+import ViewUser from './pages/ViewUser';
+import Error404 from './pages/Error404';
 
 
 
@@ -20,7 +21,8 @@ function Dashboard(props){
     return (
         <div className="dashBoard">
             <Header />
-           {/*  <h1><i className="fa fa-list-alt" aria-hidden="true"></i> Sprint Dashboard</h1> */}
+       
+        <Switch >
             <Route path="/" exact component={DashBoardOverViewSection} />
             <Route path="/newticket" component={Modal} />
             <Route path="/editticket" component={EditModal} />
@@ -30,7 +32,10 @@ function Dashboard(props){
             <Route path="/users" exact component={UserModal} />
             <Route path="/searchresults" component={SearchResults} />
             <Route path="/users/add" component={AddUser} />
-
+            <Route path="/user/edit" component={EditUser} />
+            <Route path="/user/view" component={ViewUser}  /> 
+            <Route component={Error404}  /> 
+        </Switch>
         </div>
     )
 }

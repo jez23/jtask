@@ -10,6 +10,7 @@
 }
 .storedMeta {
     grid-area: storedMeta;
+    padding: 20px;
 }
 .storedOption{
     grid-area: storedOption;
@@ -22,6 +23,12 @@
     color: white;
     height: 100%;
 }
+.fa-eye {
+    color: white;
+}
+.fa-pencil {
+    color: white;
+}
 .MoveDropDownContainer {
     position: relative;
 }
@@ -33,8 +40,8 @@
 }
 .storedStatusCardMove{
     position: absolute;
-    top: 43px;
-    left: 0px;
+    top: 37px;
+    right: 0px;
     background-color: silver;
     border: 1px solid black;
     width: 100%;
@@ -49,11 +56,13 @@
     color:black;
     text-transform: uppercase;
     text-align: center;
+    transition: all .5s ease-in-out;
 }
 .storedStatusCardMove li:hover{
     background-color: rgba(0,0,0, 0.5);
     cursor: pointer;
     color: white;
+    
 }
 .changeStatusStored {
     background-color: green;

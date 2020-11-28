@@ -35,11 +35,15 @@ const AddUser = () => {
                             <h2><i className="fa fa-user-plus" aria-hidden="true"></i>ADD USER</h2>
                 </div>
                 <form className="addUserDetails__form__input" onSubmit={() => addUser()}>
-                    <input placeholder="First Name" required value={firstName} onChange={(e) => setFirstname(e.target.value)}></input>
-                    <input placeholder="Last Name" value={lastName} required onChange={(e) => setLastName(e.target.value)}></input>
-                    <input placeholder="Job Title" value={jobTitle} onChange={(e) => setJobTitle(e.target.value)}></input>
-                    <input placeholder="Email Addess" value={email} onChange={(e) => setEmail(e.target.value)}></input>
-                    <button type="sumbit" >Add</button>
+                    <label htmlFor="firstName">First Name</label>
+                    <input title="firstName" placeholder="First Name" required value={firstName} onChange={(e) => setFirstname(e.target.value)}></input>
+                    <label htmlFor="LastName">Last Name</label>
+                    <input title="LastName" placeholder="Last Name" value={lastName} required onChange={(e) => setLastName(e.target.value)}></input>
+                    <label htmlFor="JobTitle">Job Title</label>
+                    <input title="JobTitle" placeholder="Job Title" value={jobTitle} onChange={(e) => setJobTitle(e.target.value)}></input>
+                    <label htmlFor="emailAddress">Email Address</label>
+                    <input title="emailAddress" placeholder="Email Addess" value={email} onChange={(e) => setEmail(e.target.value)}></input>
+                    <button type="sumbit">Create User</button>
                 </form>
             </div>
         </div>

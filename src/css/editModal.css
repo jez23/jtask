@@ -26,10 +26,14 @@
 .editModal label{
     font-size: 20px;
 }
-.editModal h3 {
+.editModal h2 {
     text-transform: uppercase;
+    padding: 20px 0px;
     font-size: 25px;
-    padding-bottom: 25px;
+    color: #284b63;
+}
+
+.editModal .fa-pencil{
     color: #284b63;
 }
 

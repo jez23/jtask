@@ -24,12 +24,12 @@ function Modal(props){
              {/*    <div className="modalCloserButton">
                     <i className="fa fa-window-close" aria-hidden="true" onClick={() => newTicketFunction(false)}></i>
                 </div> */}
-                <h3><i className="fa fa-file-text-o" aria-hidden="true"></i> Create a new task</h3>
+                <h2><i className="fa fa-file-text-o" aria-hidden="true"></i> Create a new task</h2>
                 <form onSubmit={(e) => saveButton(e)}>
                     <label htmlFor="title">Title</label>
                     <input required id="title" type="text" placeholder="Title" value={emptyTicketsWithState.title} onChange={e => setEmptyTicketsFunction({...emptyTicketsWithState, title: e.target.value})} required/>
                     <label htmlFor="summary">Summary</label>
-                    <input id="Summary" type="text" placeholder="summary" value={emptyTicketsWithState.summary} onChange={e => setEmptyTicketsFunction({...emptyTicketsWithState, summary: e.target.value})}/>
+                    <input id="summary" type="text" placeholder="summary" value={emptyTicketsWithState.summary} onChange={e => setEmptyTicketsFunction({...emptyTicketsWithState, summary: e.target.value})}/>
                     <label htmlFor="type">Type</label>
                     <select id="type" onChange={e => setEmptyTicketsFunction({...emptyTicketsWithState, type: e.target.value})}>
                         <option value="Bug">Bug</option>
@@ -73,7 +73,7 @@ function Modal(props){
                         <option value="Verified">Verified</option>
                         <option value="Closed">Closed</option>
                     </select>
-                    <button type="sumbit" className="modalSave">Save</button>
+                    <button type="sumbit" className="modalSave">Create Ticket</button>
                 </form>
             </div>
         </div>

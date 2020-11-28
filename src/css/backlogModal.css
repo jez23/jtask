@@ -3,7 +3,6 @@
     grid-template-columns: repeat(5, 1fr);
     grid-template-areas: 
             ". backlog backlog backlog .";
-   background-color: white;
 }
 .backlogInnerContainer{
     grid-area: backlog;
@@ -11,16 +10,8 @@
 }
 .backlogInnerContainer h2 {
     text-transform: uppercase;
-    margin-bottom: 20px;
+    padding: 20px 0px;
 }
-/* .onHoldModalContent{
-    display: grid;
-    grid-template-areas: 
-            ". closer closer closer closer closer ."
-            ". titleUser titleUser titleUser titleUser titleUser ."
-            ". user user user user user ."
-            ". add add add add add .";
-} */
 .backlogCloseButton {
     display: flex;
     justify-content: flex-end;
@@ -31,8 +22,10 @@
     cursor: pointer;
 }
 @media only screen and (max-width: 800px) {
-    .backlogInnerContainer{
-        width: 100%;
-        margin: auto; 
+    .backlogModalContainer {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas: 
+                "backlog backlog backlog";
     }
 }

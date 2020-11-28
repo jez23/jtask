@@ -10,18 +10,23 @@
 .header__topNav {
     grid-area: topNav;
     display: grid;
-    grid-template-areas: "navButton navButton navButton navButton navButton navButton";
+    grid-template-areas: "navButton navButton navButton navButton navButton mobileHamburger";
     grid-template-columns: repeat(6, 1fr);
-
+    margin-bottom: 0px;
 }
 .header__search {
     grid-area: search;
+    align-self: center;
 }
 .navButtons{
     grid-area: navButton;
+    grid-area: navButton;
+    align-self: center;
+    margin-left: 20px;
 }
 .mobileHamburger{
     grid-area: mobileHamburger;
+    display: none;
 }
 .header__logo img{
     max-width: 200px;
@@ -35,10 +40,60 @@
     padding: 10px;
     margin-left: 10px;
     text-decoration: none;
+    background-color: #284b63;
+    color: white;
+    transition: all .5s ease-in-out;
+}
+.navButton:hover {
+    background-color: green;
+    transform: scale(2);
+}
+
+@media only screen and (max-width: 1150px) {
+    .header{
+        grid-template-areas: "logo topNav topNav topNav topNav"
+                            "search search search search search";
+        grid-template-columns: repeat(5, 1fr);
+    }
+    .header__logo{
+        margin-bottom: 20px;
+    }
+    .header__topNav{
+        margin-bottom: 20px;
+    }
 }
 
 @media only screen and (max-width: 800px) {
     .header{
        margin-bottom: 10px;
+    }
+    .mobileHamburger{
+        grid-area: mobileHamburger;
+        display: block;
+    }
+    .header__topNav {
+        grid-area: topNav;
+        display: grid;
+        grid-template-areas: "mobileHamburger  navButton";
+        grid-template-columns: repeat(2, 1fr);
+        margin-bottom: 20px;
+    }
+    .navButtons{
+        grid-area: navButton;
+        display: none;
+    }
+    .header{
+        grid-template-areas: "logo logo logo logo"
+                                "topNav topNav topNav topNav"
+                                "search search search search";
+        grid-template-columns: repeat(4, 1fr);
+        display: grid;
+        margin-bottom: 20px;
+        padding: 20px;
+    }
+    .header__logo{
+        grid-area: logo;
+        margin-bottom: 10px;
+        text-align: center;
     }
 }

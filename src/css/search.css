@@ -29,3 +29,26 @@
     line-height: 30px;
     text-align: center;
 }
+.searchResultsContainer{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas:  ". results results results .";
+}
+.searchResults{
+    grid-area: results;
+    padding: 20px;
+}
+.searchResults h2{
+    padding: 20px 0px;
+}
+.searchResults h4{
+    margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 800px) {
+    .searchResultsContainer{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas:  " results results results ";
+    }
+}

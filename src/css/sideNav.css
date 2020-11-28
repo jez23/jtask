@@ -8,10 +8,9 @@
 .sideNavInnerContainer {
     height: 100%;
     width: 300px;
-    background-color: white;
+    background-color: #284b63;
 }
 .sideNav {
-    background-color: white;
     display: grid;
     grid-area: sideNav;
     width: 100%;
@@ -22,6 +21,7 @@
     display: flex;
     justify-content: flex-end;
     font-size: 30px;
+    color: red;
 }
 .sideNavClose i {
     cursor: pointer;
@@ -31,11 +31,15 @@
     padding: 10px;
     margin: 20px auto;
     width: 80%;
-    border: 1px solid black;
+    border: 3px solid green;
     text-transform: uppercase;
-    background-color: white;
+    background-color: #284b63;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    transition: all .5s ease-in-out;
 }
 .sideNav__button:hover {
-    background-color: rgba(0,0,0, 0.5);
+    background-color: green;
     color: white;
 }

@@ -1,0 +1,11 @@
+.error404{
+ 
+    margin-top: 100px;
+    text-align: center;
+}
+.error404 h2{
+    text-transform: uppercase;
+    font-size: 25px;
+    color: #284b63;
+    padding: 20px 0px;
+}

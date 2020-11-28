@@ -64,7 +64,7 @@ function handleBackLog(){
                     <div className="editTicket">
                         <Link to="/editticket" onClick={() => editModal()}><i className="fa fa-pencil" /* aria-hidden="true" */></i></Link>
                     </div>
-                    <div className="archiveButton" onMouseEnter={() => selectTicketOnHover()} onTouchStart={() => selectTicketOnHover()} onMouseLeave={(e) => statusDropDown(false, e)} onTouchCancel={(e) => statusDropDown(false, e)}>
+                   {/*  <div className="archiveButton" onMouseEnter={() => selectTicketOnHover()} onTouchStart={() => selectTicketOnHover()} onMouseLeave={(e) => statusDropDown(false, e)} onTouchCancel={(e) => statusDropDown(false, e)}>
                         <i className="fa fa-archive" aria-hidden="true"></i>
                         { drop
                              &&   
@@ -74,7 +74,7 @@ function handleBackLog(){
                                     <li onClick={e => handleBackLog()}>Add To BackLog</li>
                                 </ul>
                         </div>}
-                    </div>
+                    </div> */}
                   
             </div>
 

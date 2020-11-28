@@ -18,7 +18,7 @@ export function ConstProvider({children}){
   const [onHoldState, setOnHoldState] = useState(false);
   const [backLogState, setBackLogState] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  
+  const [selectedUser, setSelectedUser] = useState('');
 
 const showSearchResultsOnPage = () => {
     const results = ticketsWithState.filter( (ticket) => {
@@ -62,12 +62,7 @@ const showSearchResultsOnPage = () => {
       setSelectedTicketIdFunction(null);
   }
   function handleAddUser(newUser){
-console.log(newUser)
-  
     setUserFunction([...usersWithState, newUser])
-console.log([...usersWithState, newUser])
-    debugger 
-    
   } 
 
 
@@ -99,7 +94,10 @@ console.log([...usersWithState, newUser])
       setBackLogState,
       searchTerm,
       setSearchTerm,
-      showSearchResultsOnPage
+      showSearchResultsOnPage,
+      setUserFunction,
+      selectedUser, 
+      setSelectedUser
     }}>
       {children}
     </Context.Provider>
@@ -118,7 +116,7 @@ const tickets = [
       priority: "Blocker",
       status: "New",
       resolution: false,
-      points: 4,
+      points: 1,
       sprint: 4,
       assignedTo: 'Sarah',
       comments: [
@@ -133,7 +131,7 @@ const tickets = [
       priority: "High",
       status: "New",
       resolution: false,
-      points: 4,
+      points: 1,
       sprint: 4, 
       assignedTo: 'Mark',
       comments: [
@@ -151,7 +149,7 @@ const tickets = [
       priority: "Low",
       status: "New",
       resolution: false,
-      points: 4,
+      points: 2,
       sprint: 4,
       assignedTo: 'Emily',
       comments: [
@@ -175,7 +173,7 @@ const tickets = [
       priority: "Low",
       status: "Open",
       resolution: false,
-      points: 4,
+      points: 3,
       sprint: 4,
       assignedTo: 'Sarah',
       comments: [
@@ -196,7 +194,7 @@ const tickets = [
       priority: "Low",
       status: "In Progress",
       resolution: false,
-      points: 4,
+      points: 5,
       sprint: 4,
       assignedTo: 'Mark',
       comments: [
@@ -214,7 +212,7 @@ const tickets = [
       priority: "Low",
       status: "In Progress",
       resolution: false,
-      points: 4,
+      points: 100,
       sprint: 4,
       assignedTo: 'John',
       comments: [
@@ -235,7 +233,7 @@ const tickets = [
       priority: "Low",
       status: "Resolved",
       resolution: false,
-      points: 4,
+      points: 1,
       sprint: 4,
       assignedTo: 'Emily',
       comments: [
@@ -256,7 +254,7 @@ const tickets = [
       priority: "Low",
       status: "Closed",
       resolution: false,
-      points: 4,
+      points: 2,
       sprint: 4,
       assignedTo: 'John',
       comments: [
@@ -274,7 +272,7 @@ const tickets = [
       priority: "Low",
       status: "On Hold",
       resolution: false,
-      points: 4,
+      points: 3,
       sprint: 4,
       assignedTo: 'Admin',
       comments: [
@@ -295,7 +293,7 @@ const tickets = [
       priority: "Low",
       status: "On Hold",
       resolution: false,
-      points: 4,
+      points: 5,
       sprint: 4,
       assignedTo: 'Admin',
       comments: [
@@ -322,7 +320,7 @@ const tickets = [
       priority: "Low",
       status: "Backlog",
       resolution: false,
-      points: 4,
+      points: 1,
       sprint: 4,
       assignedTo: 'Admin',
       comments: [
@@ -340,7 +338,7 @@ const tickets = [
       priority: "Low",
       status: "Backlog",
       resolution: false,
-      points: 4,
+      points: 2,
       sprint: 4,
       assignedTo: 'Admin',
       comments: [

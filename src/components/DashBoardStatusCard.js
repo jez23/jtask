@@ -47,7 +47,7 @@ function DashBoardStatusCard(props){
   
               
               </div>
-              <Link to="/newticket" onClick={() => newTicket()} /* className="modalButton" */>Add new ticket</Link>
+              <Link to="/newticket" onClick={() => newTicket()} className="newTickButton">Add new ticket</Link>
           </div>
       )
   }

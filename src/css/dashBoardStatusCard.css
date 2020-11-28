@@ -1,15 +1,19 @@
 .statusCardContainer{
     grid-column: span 2;
 }
-.statusCardContainer button{
+.statusCardContainer .newTickButton{
     cursor: pointer;
     padding: 10px 10px;
     text-transform: uppercase;
+    color: black;
     background-color: white;
-    width: 100%;
     border: 1px solid black;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    transition: all .5s ease-in-out;
 }
-.statusCardContainer button:hover{
+.statusCardContainer .newTickButton:hover{
     color: white;
     background-color: rgba(0, 0, 0, 0.5);
 }

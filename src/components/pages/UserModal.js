@@ -2,35 +2,33 @@ import React, { useContext } from 'react';
 import Context from '../../contexts/Context';
 import { Link } from 'react-router-dom'; 
 
-/* function userModalContainerRemove(){
-    const userModalContainer = document.querySelector('.userModalContainer');
-    userModalContainer.classList.add('display')
-} */
-
-/* function newUserInputvalue(){
-
-    const inputVal = document.querySelector('.addUser').value;
-    document.querySelector('.addUser').value = ""
-    return inputVal;
-} */
-
 function UserModal(props){
 
 
-    const { usersWithState,  handleAddUser , setSideNavUserState} = useContext(Context);
+    const { usersWithState, setUserFunction, setSelectedUser} = useContext(Context);
 
+    const removeUser = (id) => {
+        const removeCurrentUser = usersWithState.filter(user => {
+            return user.id !== id;
+        })
+        setUserFunction([...removeCurrentUser]);
+    }
+
+    const storeUser = (user) => {
+        const userArray = [user]
+        setSelectedUser(userArray) 
+    }
 
     return (
         <div className="userModalContainer">
             <div className="userModalInnerContainer">
                 <div className="userModalContent">
-               {/*      <div className='closeButton'>
-                        <i className="fa fa-window-close" aria-hidden="true" onClick={() => setSideNavUserState(false)}></i>
-                    </div> */}
-                    <div className='titleUser'>
-                        <h2><i className="fa fa-user-plus" aria-hidden="true"></i> USERS</h2>
-                    </div>
+                   
                     <div className="user">
+                        <div className='titleUser'>
+                            <h2><i className="fa fa-user-plus" aria-hidden="true"></i> USERS</h2>
+                        </div>
+                   
                             {usersWithState.map(el => {
                                
                                 return (<div className="addedUser" key={el.id}>
@@ -44,18 +42,17 @@ function UserModal(props){
                                         <div className="userEmail">
                                             <p>{el.email}</p>
                                         </div>
-                                        <div className="userTicketsAssigned">
-                                            <p>3</p>
+                                        <div className="removeEdit">
+                                        <Link to='/user/view' onClick={() => storeUser(el)}><i className="fa fa-eye"></i></Link>
+                                        <Link to='/user/edit' onClick={() => storeUser(el)}><i className="fa fa-pencil"></i></Link>
+                                            <i className="fa fa-window-close" aria-hidden="true" onClick={() => removeUser(el.id)}></i>
                                         </div>
                                     </div>
                                 </div>) 
                             })}
                     </div>
-                    <div className="add">
-                           {/*  <input placeholder="Add new users here." className="addUser"></input> */}
-                           <Link to='/users/add' className="navButton">Add User</Link>
-                          {/*   <button onClick={() =>  handleAddUser(newUserInputvalue())}>Add</button> */}
-                    </div>
+                 <Link to='/users/add' className="add">Add User</Link>
+         
                 </div>
             </div>
         </div>

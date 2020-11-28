@@ -1,16 +1,14 @@
 .searchWidget {
     background-color: white;
-    margin-bottom: 10px;
     display: grid;
     grid-template-areas: 
-                "search search search search search search sprintDropDown sprintDropDown";
+                "search search search search search search search";
 }
 
 @media only screen and (max-width: 800px) {
     .searchWidget {
         grid-template-areas: 
-                    "search search"
-                    "sprintDropDown sprintDropDown";
+                    "search search";
     }
 
 }
