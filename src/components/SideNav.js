@@ -31,11 +31,11 @@ function SideNav(props) {
                     
                     </div>
 
-            <Link to='/' className="sideNav__button">Dashboard</Link>
-            <Link to='/newticket' className="sideNav__button">New Ticket</Link>
-            <Link to='/onholdtickets' className="sideNav__button">On Hold</Link>
-            <Link to='/backlog' className="sideNav__button">Backlog</Link>
-            <Link to='/users' className="sideNav__button">Users</Link>
+            <Link to='/' className="sideNav__button" onClick={() => setSideBarState(false)}>Dashboard</Link>
+            <Link to='/newticket' className="sideNav__button" onClick={() => setSideBarState(false)}>New Ticket</Link>
+            <Link to='/onholdtickets' className="sideNav__button" onClick={() => setSideBarState(false)}>On Hold</Link>
+            <Link to='/backlog' className="sideNav__button" onClick={() => setSideBarState(false)}>Backlog</Link>
+            <Link to='/users' className="sideNav__button" onClick={() => setSideBarState(false)}>Users</Link>
 
 
                   {/*   <button className="sideNav__button" onClick={() => setSideBarState(false)}>Dash Board</button>

@@ -122,6 +122,7 @@
             "userName "
             " userEmail"
             "removeEditViewButtons";
+            overflow: auto;
     }
     .userName {
         margin-top: 10px;

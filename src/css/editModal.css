@@ -1,14 +1,12 @@
 .editModalContainer {
- 
-    background-color: white;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas: ". edit edit edit .";
+   display: grid;
  
  }
  .editModal {
-     background-color: white;
-     width: 60%;
-     height: 100%;
-     margin: auto;
-     padding: 20px;
+    grid-area: edit; 
+    padding: 20px;
  }
  .editModal form{
     display: grid;
@@ -38,8 +36,10 @@
 }
 
 @media only screen and (max-width: 800px) {
-    .editModal{
-        width: 100%;
-        margin: auto; 
-    }
+    .editModalContainer {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas: "edit edit edit ";
+       display: grid;
+     
+     }
 }
