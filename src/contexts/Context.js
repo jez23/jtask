@@ -24,7 +24,6 @@ const showSearchResultsOnPage = () => {
     const results = ticketsWithState.filter( (ticket) => {
           return ticket.title.toLowerCase().includes(searchTerm.toLowerCase()) || ticket.id.toLowerCase().includes(searchTerm.toLowerCase());
     })
-    console.log(results)
     return results;
 }
 
@@ -43,7 +42,7 @@ const showSearchResultsOnPage = () => {
         assignedTo: newObject.assignedTo,
         comments: []
     }
-    console.log(newObject)
+
     setTicketsFunction([...ticketsWithState, newTicket]);
     setEmptyTicketsFunction(emptyTicket);
   }
@@ -105,6 +104,8 @@ const showSearchResultsOnPage = () => {
 }
 
 export default Context;
+
+
 
 const tickets = [
     {

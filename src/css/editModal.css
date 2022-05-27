@@ -1,4 +1,4 @@
-.editModalContainer {
+/* .editModalContainer {
     grid-template-columns: repeat(5, 1fr);
     grid-template-areas: ". edit edit edit .";
    display: grid;
@@ -42,4 +42,4 @@
        display: grid;
      
      }
-}
+} */

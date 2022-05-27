@@ -1,34 +1,11 @@
-.statusCardContainer{
-    grid-column: span 2;
-}
-.statusCardContainer .newTickButton{
-    cursor: pointer;
-    padding: 10px 10px;
-    text-transform: uppercase;
-    color: black;
-    background-color: white;
-    border: 1px solid black;
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    transition: all .5s ease-in-out;
-}
-.statusCardContainer .newTickButton:hover{
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-.statusCardContainer h3 {
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    margin-top: 10px;
-}
 .dashBoardStatusCard {
     background-color:white;
-    padding: 20px;
+    padding: 10px;
     grid-column: span 2;
     border: 1px dashed black;
     margin-bottom: 20px;
     margin-top: 20px;
+    min-width: 300px;
 }
 .dashBoardStatusCard h3 {
     color: #284b63;
@@ -37,4 +14,10 @@
 }
 .dragging {
     touch-action: none;
+}
+
+@media only screen and (max-width: 800px) {
+    .dashBoardStatusCard {
+        min-width: 270px;
+    }
 }

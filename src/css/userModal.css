@@ -1,29 +1,3 @@
-.userModalContainer {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-areas: 
-            ". users users users ."; 
-}
-.userModalInnerContainer{
-  grid-area: users;
-}
-.userModalContent{
-    display: grid;
-    grid-template-areas:
-        "titleUser titleUser titleUser titleUser titleUser"
-        "user user user user user"
-        "add add add add add";
-    padding: 20px;
-    height: 100%;
-  
-}
-.titleUser {
-    grid-area: titleUser;
-    padding: 20px 0px;
-}
-.user{
-    grid-area: user;
-}
 .user ol li {
     text-transform: uppercase;
     margin-left: 20px;
@@ -58,7 +32,8 @@
     grid-template-columns: repeat(12, 1fr);
     border: 1px solid black;
     margin-bottom: 10px;
-    grid-template-areas: " imagePhoto imagePhoto metaInfo metaInfo metaInfo metaInfo metaInfo metaInfo metaInfo metaInfo metaInfo metaInfo"
+    grid-template-areas: " imagePhoto imagePhoto metaInfo metaInfo metaInfo metaInfo metaInfo metaInfo metaInfo metaInfo metaInfo metaInfo";
+    border-radius: 10px;
 
 }
 .addUserImage {
@@ -93,18 +68,13 @@
     padding: 10px;
     text-align: center;
     grid-area: removeEditViewButtons;
+    border-radius: 0px 10px 10px 0px;
 }
 .userTicketsAssigned{
     grid-area: removeEditViewButtons;
 }
 
 @media only screen and (max-width: 900px) {
-    .userModalContainer {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-areas: 
-                "users users users"; 
-    }
     .addedUser {
         grid-template-columns: repeat(2, 1fr);
         margin-bottom: 10px;
@@ -132,5 +102,8 @@
     .userEmail {
         margin-left: 10px;
         margin-bottom: 10px;
+    }
+    .removeEdit {
+        border-radius: 0px 0px 10px 10px;
     }
 }

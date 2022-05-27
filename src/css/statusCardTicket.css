@@ -65,13 +65,32 @@
     transform: scale(1.1); 
 }
 .statusCardTicket__priority{
-    background-color: green;
     color: white;
     padding: 2px 10px;
     width: fit-content;
     border-radius: 50px;
     margin-bottom: 10px;
     text-transform: uppercase;
+}
+.status_new{
+    background-color: green;
+}
+.status_open{
+    background-color: lightblue;
+}
+.status_progress{
+    background-color: yellow;
+    color: black;
+}
+.status_resolved{
+    background-color: orange;
+}
+.status_closed{
+    background-color: red;
+}
+
+.statusCardTicket__priority p{
+    font-family: 'Oswald', sans-serif;
 }
 .changeStatus{
     background-color: grey;

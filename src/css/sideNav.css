@@ -4,6 +4,8 @@
     background-color: rgba(0, 0, 0, 0.5);
     position: fixed;
     z-index: 100;
+    top: 0px;
+    left: 0px;
 }
 .sideNavInnerContainer {
     height: 100%;
@@ -22,6 +24,7 @@
     justify-content: flex-end;
     font-size: 30px;
     color: red;
+    margin-bottom: 20px;
 }
 .sideNavClose i {
     cursor: pointer;

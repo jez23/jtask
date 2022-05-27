@@ -1,12 +1,6 @@
-@import './fonts.css';
-@import './styles.css';
-@import './mainContainer.css';
+@import './global.css';
 @import './header.css';
 @import './sideNav.css';
-@import './dashBoard.css';
-@import './modal.css';
-@import './editModal.css';
-@import './searchWidget.css';
 @import './search.css';
 @import './sprintDropDown.css';
 @import './dashBoardOverView.css';
@@ -15,7 +9,7 @@
 @import './userModal.css';
 @import './addUser.css';
 @import './viewUser.css';
-@import './onHoldModal.css';
+
 @import './backlogModal.css';
 @import './viewTicketModal.css';
 @import './storedStatusCard.css';

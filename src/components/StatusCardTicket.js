@@ -43,10 +43,17 @@ function StatusCardTicket(props){
         statusDropDown(false);
         handleChange({status: "Backlog"})
     }
+
     return (
         <div className="statusCardTicket" draggable="true" id={props.id}  onDragStart={dragStartHandlerStart}>
             <div className="statusCardTicket__info">
-                <div className="statusCardTicket__priority">
+                <div className={`statusCardTicket__priority ${
+                    props.status === "New" ? "status_new" : 
+                    props.status === "Open" ? "status_open" :
+                    props.status === "In Progress" ? "status_progress" :
+                    props.status === "Resolved" ? "status_resolved" : "status_closed"
+
+                }`}>
                 <p className="statusUpdate">{props.status}</p>
                 </div>
                 <h3>{props.title}</h3>

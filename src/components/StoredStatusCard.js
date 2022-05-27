@@ -45,16 +45,24 @@ function handleBackLog(){
 }
 
     const [newStatusShow, setNewStatusShow] = useState(false);
+   
+    console.log(props.status)
     return (
         <div className="storedStatusCard">
             <div className="storedStatusCard__info">
                    
                 <div className="storedMeta">
-                    <p className="statusCardTicket__priority">{props.status}</p>
+                    <p className={`statusCardTicket__priority ${
+                    props.status === "New" ? "status_new" : 
+                    props.status === "Open" ? "status_open" :
+                    props.status === "In Progress" ? "status_progress" :
+                    props.status === "Resolved" ? "status_resolved" : "status_closed"
+                    }
+                `}>{props.status}</p>
                     <h3>{props.title}</h3>
                     <p><i className="fa fa-id-badge" aria-hidden="true"></i> {props.id}</p>
                 </div>
-{/*  ########### */}
+
                 <div className="storedOption">
                 <div className="storedOption__nav">
                     <div className="viewTicket">

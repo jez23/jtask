@@ -1,29 +1,16 @@
 import React, { useContext } from 'react';
+import ReactDOM from "react-dom";
 import { Link } from 'react-router-dom';
 
 import Context from '../contexts/Context';
 
 
 function SideNav(props) {
-    const { setSideBarState,
-            /* setSideNavUserState,
-            setOnHoldState,
-            setBackLogState */} = useContext(Context);
+    const { setSideBarState, sideBarState } = useContext(Context);
 
-  /*   function showUserModal(){
-        setSideBarState(false);
-        setSideNavUserState(true);
-    }
-    function showOnHoldModal(){
-        setSideBarState(false);
-        setOnHoldState(true);
-    }
-    function showBackLog(){
-        setSideBarState(false);
-        setBackLogState(true)
-    } */
-    return (
-        <div className="sideNavContainer" onClick={() => setSideBarState(false)}>
+    return ReactDOM.createPortal(
+<>
+       {sideBarState &&  <div className="sideNavContainer" onClick={() => setSideBarState(false)}>
             <div className="sideNavInnerContainer" onClick={(e) => e.stopPropagation()}>
                 <div className="sideNav">
                     <div className="sideNavClose">
@@ -31,21 +18,29 @@ function SideNav(props) {
                     
                     </div>
 
-            <Link to='/' className="sideNav__button" onClick={() => setSideBarState(false)}>Dashboard</Link>
-            <Link to='/newticket' className="sideNav__button" onClick={() => setSideBarState(false)}>New Ticket</Link>
-            <Link to='/onholdtickets' className="sideNav__button" onClick={() => setSideBarState(false)}>On Hold</Link>
-            <Link to='/backlog' className="sideNav__button" onClick={() => setSideBarState(false)}>Backlog</Link>
-            <Link to='/users' className="sideNav__button" onClick={() => setSideBarState(false)}>Users</Link>
+            <Link to='/' onClick={() => setSideBarState(false)}>
+                <button className='btn'>Dashboard</button>
+            </Link>
+            <Link to='/newticket' onClick={() => setSideBarState(false)}>
+                <button className='btn'>New Ticket</button>
+            </Link>
+            <Link to='/onholdtickets' onClick={() => setSideBarState(false)}>
+                <button className='btn'>On Hold</button>
+            </Link>
+            <Link to='/backlog' onClick={() => setSideBarState(false)}>
+                <button className='btn'>Backlog</button>
+            </Link>
+            <Link to='/users' onClick={() => setSideBarState(false)}>
+                <button className='btn'>Users</button>
+            </Link>
 
 
-                  {/*   <button className="sideNav__button" onClick={() => setSideBarState(false)}>Dash Board</button>
-                    <button className="sideNav__button" onClick={() => showUserModal()}>User</button>
-                    <button className="sideNav__button" onClick={() => showOnHoldModal()}>On Hold</button>
-                    <button className="sideNav__button" onClick={() => showBackLog()}>Back Log</button>           */}
+                 
                 </div>
             </div>
-        </div>
-    );
+        </div>}
+        </>
+     , document.getElementById("mobile_nav"));
   }
   
   export default SideNav;
