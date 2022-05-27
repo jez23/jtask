@@ -18,7 +18,7 @@ function DashBoardOverView(props) {
   return (
     <div className="center90">
       <h1>
-        <i class="fa fa-list-alt" aria-hidden="true"></i> Sprint Dashboard
+        <i className="fa fa-list-alt" aria-hidden="true"></i> Sprint Dashboard
       </h1>
       <div className="dashBoardOverView">
         {lists.map((item) => (

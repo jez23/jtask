@@ -12,7 +12,7 @@ function EditModal(props) {
   return (
     <div className="center60">
       <h2>
-        <i class="fa fa-pencil" aria-hidden="true"></i> Edit TASK
+        <i className="fa fa-pencil" aria-hidden="true"></i> Edit TASK
       </h2>
       <form>
         <label htmlFor="editTitle">Edit Title</label>

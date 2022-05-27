@@ -9,7 +9,7 @@ const SearchResults = () => {
   return (
     <div className="center60">
       <h2>
-        <i class="fa fa-user-plus" aria-hidden="true"></i> SEARCH RESULTS
+        <i className="fa fa-user-plus" aria-hidden="true"></i> SEARCH RESULTS
       </h2>
       {searchTerm && <h4>Showing Results for: "{searchTerm}"</h4>}
 

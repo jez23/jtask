@@ -11,7 +11,7 @@ function Header(props) {
       <Logo />
       <Nav />
       <button className="mobile_nav" onClick={() => setSideBarState(true)}>
-        <i class="fa fa-bars" aria-hidden="true"></i>
+        <i className="fa fa-bars" aria-hidden="true"></i>
       </button>
       <Search />
     </div>
