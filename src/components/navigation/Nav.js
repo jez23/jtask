@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Nav(props) {
+function Nav() {
 
   return (
     <div className="header__nav">
         <Link to="/">Dashboard</Link>
-        <Link to="/newticket">New Ticket</Link>
+        <Link to="/new-ticket">New Ticket</Link>
         <Link to="/onholdtickets">On Hold</Link>
         <Link to="/backlog">Backlog</Link>
         <Link to="/users">Users</Link>

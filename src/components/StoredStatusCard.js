@@ -1,82 +1,54 @@
-import React, { useState, useContext, useRef } from "react";
+import React, { useState, useContext } from "react";
 
 import { Link } from "react-router-dom";
 
 import Context from "../contexts/Context";
 
-function StoredStatusCard(props) {
-  const { selectedTicket, handleTicketEdit, handleTicketSelect } =
-    useContext(Context);
-
-  const [drop, dropFunction] = useState(false);
-  function handleChange(changes) {
-    handleTicketEdit(selectedTicket.id, { ...selectedTicket, ...changes });
-  }
-  const statusButton = useRef();
-  function viewTicket() {
-    handleTicketSelect(props.id);
-  }
-  function setSelectedTicket() {
-    setNewStatusShow(true);
-    handleTicketSelect(props.id);
-  }
-  function editModal() {
-    handleTicketSelect(props.id);
-  }
-  function selectTicketOnHover() {
-    handleTicketSelect(props.id);
-    statusDropDown(true);
-  }
-  function statusDropDown(status, e) {
-    dropFunction(status);
-  }
-  function handleOnHold() {
-    statusDropDown(false);
-    handleChange({ status: "On Hold" });
-  }
-  function handleBackLog() {
-    statusDropDown(false);
-    handleChange({ status: "Backlog" });
-  }
+function StoredStatusCard({ ticket }) {
+  const { handleTicketEdit } = useContext(Context);
 
   const [newStatusShow, setNewStatusShow] = useState(false);
 
-  console.log(props.status);
+  function handleChange(changes) {
+    handleTicketEdit(ticket.id, { ...ticket, ...changes });
+  }
+
   return (
     <div className="storedStatusCard">
       <div className="storedStatusCard__info">
         <div className="storedMeta">
           <p
             className={`statusCardTicket__priority ${
-              props.status === "New"
+              ticket.status === "New"
                 ? "status_new"
-                : props.status === "Open"
+                : ticket.status === "Open"
                 ? "status_open"
-                : props.status === "In Progress"
+                : ticket.status === "In Progress"
                 ? "status_progress"
-                : props.status === "Resolved"
+                : ticket.status === "Resolved"
                 ? "status_resolved"
                 : "status_closed"
             }
                 `}
           >
-            {props.status}
+            {ticket.status}
           </p>
-          <h3>{props.title}</h3>
+          <h3>{ticket.title}</h3>
           <p>
-            <i className="fa fa-id-badge" aria-hidden="true"></i> {props.id}
+            <i className="fa fa-id-badge" aria-hidden="true"></i> Ticket ID:
+            {ticket.id}
           </p>
         </div>
 
         <div className="storedOption">
           <div className="storedOption__nav">
             <div className="viewTicket">
-              <Link to="/ViewTicket" onClick={() => viewTicket()}>
+              <Link to={`/ViewTicket/${ticket.id}`}>
                 <i className="fa fa-eye"></i>
               </Link>
             </div>
             <div className="editTicket">
-              <Link to="/editticket" onClick={() => editModal()}>
+              <Link to={`/edit-ticket/${ticket.id}`}>
                 <i className="fa fa-pencil"></i>
               </Link>
             </div>
@@ -85,16 +57,11 @@ function StoredStatusCard(props) {
       </div>
       <div
         className="MoveDropDownContainer"
+        onMouseEnter={() => setNewStatusShow(true)}
         onMouseLeave={() => setNewStatusShow(false)}
         onTouchCancel={() => setNewStatusShow(false)}
       >
-        <button
-          className="changeStatusStored"
-          onMouseEnter={() => setSelectedTicket()}
-          onTouchStart={() => setSelectedTicket()}
-        >
-          Change Status
-        </button>
+        <button className="changeStatusStored">Change Status</button>
         {newStatusShow && (
           <div className="storedStatusCardMove">
             <ul>

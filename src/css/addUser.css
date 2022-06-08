@@ -5,8 +5,6 @@
     ". userFrom userFrom userFrom .";
 }
 
-
-
 @media only screen and (max-width: 800px) {
     .addUserDetails{
         display: grid;

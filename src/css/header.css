@@ -1,23 +1,40 @@
 .header{
-    grid-template-areas: "logo topNav topNav search";
-    grid-template-columns: repeat(4, 1fr);
-    display: grid;
-    gap: 10px;
     margin-bottom: 20px;
-    padding: 20px;
+}
+.header__meta{
+    display: grid;
+   grid-template-areas: 
+    "search logo account";
+    gap: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
 }
 .header__logo{
     grid-area: logo;
+    display: flex;
+    justify-content: center;
 }
 .header__search {
     grid-area: search;
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
     align-items: center;
 }
+.header__account{
+    grid-area: account;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+.header__mobileNav{
+    grid-area: mobileNav;
+    display: none;
+}
+.header__account .btn{
+    margin-bottom: 0px;
+}
 .header__nav{
-    grid-area: topNav;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -34,7 +51,6 @@
     transition: all .2s ease-in-out;
     border-radius: 10px;
     text-transform: uppercase;
-    font-family: 'Oswald', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -81,12 +97,19 @@
 }
 
 @media only screen and (max-width: 600px) {
-    .header{
-        grid-template-areas: 
-        "logo"
-        "search";
-        grid-template-columns: repeat(1, 1fr);
-        padding: 5px;
+    .header__meta{
+        display: grid;
+       grid-template-areas: 
+       "mobileNav account"
+       "logo logo" 
+       "search search";
+        gap: 10px;
+        padding: 10px;
+        margin-bottom: 0px;
+    }
+
+    .header__mobileNav{
+        display: block;
     }
     .header__nav{
         display: none;

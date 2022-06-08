@@ -1,26 +1,40 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
 
 import Context from "../../contexts/Context";
 
-const AddUser = () => {
-  const { handleAddUser } = useContext(Context);
+const AddNewUser = () => {
+  const { handleAddUser, allUsers } = useContext(Context);
   const history = useHistory();
 
   const [firstName, setFirstname] = useState("");
   const [lastName, setLastName] = useState("");
   const [jobTitle, setJobTitle] = useState("");
   const [email, setEmail] = useState("");
+  const [image, setImage] = useState("");
+  const [role, setRole] = useState("");
 
   const addUser = (e) => {
+    e.preventDefault();
+
+    const regEx = /\S+@\S+\.\S+/gi;
+
+    if (!email.match(regEx)) {
+      return alert("Please provide a valid email address.");
+    }
+
+    const convertedImage = URL.createObjectURL(image);
+
     const newUser = {
-      id: uuidv4(),
+      id: allUsers.length + 1,
       firstname: firstName,
       lastname: lastName,
       jobTitle: jobTitle,
       email: email,
+      img: convertedImage,
+      role: role,
     };
+
     handleAddUser(newUser);
     history.push("/users");
   };
@@ -31,37 +45,57 @@ const AddUser = () => {
         <i className="fa fa-user-plus" aria-hidden="true"></i>ADD USER
       </h2>
 
-      <form className="addUserDetails__form__input" onSubmit={() => addUser()}>
+      <form className="addUserDetails__form__input" onSubmit={addUser}>
         <label htmlFor="firstName">First Name</label>
         <input
-          title="firstName"
+          id="firstName"
           placeholder="First Name"
           required
           value={firstName}
           onChange={(e) => setFirstname(e.target.value)}
-        ></input>
+        />
         <label htmlFor="LastName">Last Name</label>
         <input
-          title="LastName"
+          id="LastName"
           placeholder="Last Name"
           value={lastName}
           required
           onChange={(e) => setLastName(e.target.value)}
-        ></input>
+        />
         <label htmlFor="JobTitle">Job Title</label>
         <input
-          title="JobTitle"
+          id="JobTitle"
           placeholder="Job Title"
           value={jobTitle}
           onChange={(e) => setJobTitle(e.target.value)}
-        ></input>
+        />
         <label htmlFor="emailAddress">Email Address</label>
         <input
-          title="emailAddress"
+          id="emailAddress"
           placeholder="Email Addess"
+          required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-        ></input>
+        />
+        <label htmlFor="permissionRole">Permission Role</label>
+        <select
+          id="permissionRole"
+          required
+          value={role}
+          onChange={(e) => setRole(e.target.value)}
+        >
+          <option value="">Choose Role</option>
+          <option value="1">Admin</option>
+          <option value="2">Team Member</option>
+        </select>
+        <label htmlFor="profileImage">Profile Image</label>
+        <input
+          id="profileImage"
+          required
+          onChange={(e) => setImage(e.target.files[0])}
+          type="file"
+        />
+
         <button type="sumbit" className="btn">
           Create User
         </button>
@@ -70,4 +104,4 @@ const AddUser = () => {
   );
 };
 
-export default AddUser;
+export default AddNewUser;

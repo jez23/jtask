@@ -1,21 +1,52 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import Context from "../../contexts/Context";
 
-function NewTicket(props) {
+function NewTicket() {
+  
   const history = useHistory();
 
   const {
-    handleTicketAdd,
-    /*  newTicketFunction ,  */
-    usersWithState,
-    emptyTicketsWithState,
-    setEmptyTicketsFunction,
+    handleAddNewTicket,
+    allUsers,
+    allTickets
   } = useContext(Context);
 
-  function saveButton(e) {
-    handleTicketAdd(emptyTicketsWithState);
+  const [title, setTitle] = useState("");
+  const [summary, setSummary] = useState("");
+  const [type, setType] = useState("");
+  const [priority, setPriority] = useState("");
+  const [points, setPoints] = useState("");
+  const [assignee, setAssignee] = useState(1);
+  const [status, setStatus] = useState("");
+ 
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const newTicket = {
+      id : allTickets.length + 1,
+      title: title, 
+      summary: summary,
+      type: type,
+      priority: priority,
+      points: points,
+      sprint: 0,
+      status: status,
+      assignedTo: assignee,
+      comments: []
+    }
+
+    handleAddNewTicket(newTicket);
+
+    setTitle("");
+    setSummary("");
+    setType("");
+    setPriority("");
+    setPoints("");
+    setAssignee("");
+    setStatus("");
+
     history.push("/");
   }
 
@@ -25,43 +56,31 @@ function NewTicket(props) {
         <i className="fa fa-file-text-o" aria-hidden="true"></i> Create a new
         task
       </h2>
-      <form onSubmit={(e) => saveButton(e)}>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="title">Title</label>
         <input
           required
           id="title"
           type="text"
           placeholder="Title"
-          value={emptyTicketsWithState.title}
-          onChange={(e) =>
-            setEmptyTicketsFunction({
-              ...emptyTicketsWithState,
-              title: e.target.value,
-            })
-          }
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
         />
         <label htmlFor="summary">Summary</label>
-        <input
+        <textarea
+        rows={5}
+        cols={5}
           id="summary"
           type="text"
           placeholder="summary"
-          value={emptyTicketsWithState.summary}
-          onChange={(e) =>
-            setEmptyTicketsFunction({
-              ...emptyTicketsWithState,
-              summary: e.target.value,
-            })
-          }
+          value={summary}
+          onChange={(e) => setSummary(e.target.value)}
         />
         <label htmlFor="type">Type</label>
         <select
           id="type"
-          onChange={(e) =>
-            setEmptyTicketsFunction({
-              ...emptyTicketsWithState,
-              type: e.target.value,
-            })
-          }
+          value={type}
+          onChange={(e) => setType(e.target.value)}
         >
           <option value="Bug">Bug</option>
           <option value="Improvement">Improvement</option>
@@ -71,12 +90,8 @@ function NewTicket(props) {
         <label htmlFor="priority">Priority</label>
         <select
           id="priority"
-          onChange={(e) =>
-            setEmptyTicketsFunction({
-              ...emptyTicketsWithState,
-              priority: e.target.value,
-            })
-          }
+          onChange={(e) => setPriority(e.target.value)}
+          value={priority}
         >
           <option value="Low">Low</option>
           <option value="Medium">Medium</option>
@@ -87,12 +102,8 @@ function NewTicket(props) {
         <select
           id="points"
           placeholder="points"
-          onChange={(e) =>
-            setEmptyTicketsFunction({
-              ...emptyTicketsWithState,
-              points: e.target.value,
-            })
-          }
+          value={points}
+          onChange={(e) => setPoints(e.target.value)}
         >
           <option value="0.5">0.5</option>
           <option value="1">1</option>
@@ -108,28 +119,20 @@ function NewTicket(props) {
         <label htmlFor="assignee">Assignee</label>
         <select
           id="assignee"
-          onChange={(e) =>
-            setEmptyTicketsFunction({
-              ...emptyTicketsWithState,
-              assignedTo: e.target.value,
-            })
-          }
+          value={assignee}
+          onChange={(e) => setAssignee(e.target.value)}
         >
-          {usersWithState.map((el) => (
-            <option value={el.firstname} key={el.id}>
-              {el.firstname}
+          {allUsers.map((user) => (
+            <option value={user.id} key={user.id}>
+              {`${user.firstname} ${user.lastname}`}
             </option>
           ))}
         </select>
         <label htmlFor="status">Status</label>
         <select
           id="status"
-          onChange={(e) =>
-            setEmptyTicketsFunction({
-              ...emptyTicketsWithState,
-              status: e.target.value,
-            })
-          }
+          value={status}
+          onChange={(e) => setStatus(e.target.value)}
           required
         >
           <option value="">Choose Status</option>

@@ -47,7 +47,6 @@
     padding: 5px;
     width: 150px;
     list-style: none;
-   
 }
 .archiveButton{
     position: relative;
@@ -59,7 +58,6 @@
 .statusCardTicket__nav div i {
     transition: all .2s ease-in-out;
 }
-
 .statusCardTicket__nav div i:hover {
     color: black;
     transform: scale(1.1); 
@@ -88,9 +86,8 @@
 .status_closed{
     background-color: red;
 }
-
 .statusCardTicket__priority p{
-    font-family: 'Oswald', sans-serif;
+    margin-bottom: 0px;
 }
 .changeStatus{
     background-color: grey;

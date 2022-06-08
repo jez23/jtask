@@ -3,6 +3,12 @@
     margin: 0;
     padding: 0;
 }
+.container-center{
+    min-height: calc(100vh - 140px);
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
 .center90{
     width: 90%;
     margin: 0 auto;
@@ -13,15 +19,19 @@
     margin: 0 auto;
     margin-bottom: 50px;
 }
+.centerContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
 h1, h2, h3, h4{
-    font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
     color: #284b63;
-    font-family: 'Oswald', sans-serif;
     margin-bottom: 20px;
 }
-label{
-    font-family: 'Oswald', sans-serif;
+p{
+    margin-bottom: 10px;
 }
 .btn{ 
     cursor: pointer;
@@ -35,7 +45,6 @@ label{
     transition: all .2s ease-in-out;
     border-radius: 10px;
     width: 100%;
-    font-family: 'Oswald', sans-serif;
     font-size: 20px;
 }
 
@@ -45,29 +54,16 @@ label{
     background-color: white;
 }
 
-form{
-    display: flex;
-    flex-direction: column;
-}
-
-label{
-    font-size: 20px;
-    margin-bottom: 5px;
-}
-input{
-    padding: 10px;
-    margin-bottom: 10px;
-}
-select{
-    padding: 10px;
-    margin-bottom: 10px;
-}
-
 @media only screen and (max-width: 800px) {
     .center90{
         width: 95%;
     }
     .center60{
         width: 95%;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .container-center{
+        min-height: calc(100vh - 193px);
     }
 }

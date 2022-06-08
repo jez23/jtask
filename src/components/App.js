@@ -1,51 +1,60 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { ConstProvider } from '../contexts/Context';
 import {Route, Switch} from "react-router-dom";
+import RequireAuth from "../components/RequireAuth";
 
+import spinner from "../img/loader/Spinner-1s-200px.svg";
 import '../css/imports.css';
-import Header from './header/Header';
-import DashBoardOverViewSection from './pages/DashBoardOverViewSection';
-import NewTicket from './pages/NewTicket';
-import EditModal from './pages/EditModal';
-import OnHoldModal from './pages/OnHoldModal';
-import BacklogModal from './pages/BacklogModal';
-import ViewTicketModal from './pages/ViewTicketModal';
-import UserModal from './pages/UserModal';
-import SearchResults from './pages/SearchResults';
-import AddUser from './pages/AddUser';
-import EditUser from './pages/EditUser';
-import ViewUser from './pages/ViewUser';
-import SideNav from "./SideNav";
 
+import Header from './header/Header';
+import SideNav from "./SideNav";
 import Error404 from './pages/Error404';
 
-
+const DashBoardOverViewSection = React.lazy(() => import('./pages/DashBoardOverView'));
+const NewTicket = React.lazy(() => import('./pages/NewTicket'));
+const EditTicket = React.lazy(() => import('./pages/EditTicket'));
+const OnHold = React.lazy(() => import('./pages/OnHold'));
+const BackLog = React.lazy(() => import('./pages/BackLog'));
+const ViewTicket = React.lazy(() => import('./pages/ViewTicket'));
+const ViewAllUsers = React.lazy(() => import('./pages/ViewAllUsers'));
+const SearchResults = React.lazy(() => import('./pages/SearchResults'));
+const AddNewUser = React.lazy(() => import('./pages/AddNewUser'));
+const EditUser = React.lazy(() => import('./pages/EditUser'));
+const ViewUser = React.lazy(() => import('./pages/ViewUser'));
+const Login  = React.lazy(() => import( './pages/Login'));
 
 function App() {
   return (
-   
-   
       <ConstProvider>
+         <Suspense
+          fallback={
+            <div className="loaderSpinner">
+              <img alt="Loading Spinner" src={spinner} />
+            </div>
+          }
+        >
       <Header />
       <SideNav  />
       <div className="container"> 
       <Switch >
-            <Route path="/" exact component={DashBoardOverViewSection} />
-            <Route path="/newticket" component={NewTicket} />
-            <Route path="/editticket" component={EditModal} />
-            <Route path="/onholdtickets" component={OnHoldModal} />
-            <Route path="/backlog" component={BacklogModal} />
-            <Route path="/ViewTicket" component={ViewTicketModal} />
-            <Route path="/users" exact component={UserModal} />
-            <Route path="/searchresults" component={SearchResults} />
-            <Route path="/users/add" component={AddUser} />
-            <Route path="/user/edit" component={EditUser} />
-            <Route path="/user/view" component={ViewUser}  /> 
-            <Route component={DashBoardOverViewSection}  /> 
+            <Route path="/" exact render={() => <RequireAuth><DashBoardOverViewSection /></RequireAuth>}/>
+            <Route path="/login" component={Login} />
+            <Route path="/new-ticket" render={() => <RequireAuth><NewTicket/></RequireAuth>}/>
+            <Route path="/edit-ticket/:ticket_id" render={() => <RequireAuth><EditTicket/></RequireAuth>}/>
+            <Route path="/onholdtickets" render={() => <RequireAuth><OnHold/></RequireAuth>}/>
+            <Route path="/backlog" render={() => <RequireAuth><BackLog/></RequireAuth>}/>
+            <Route path="/ViewTicket/:ticket_id" render={() => <RequireAuth><ViewTicket/></RequireAuth>}/>
+            <Route path="/users" exact render={() => <RequireAuth><ViewAllUsers/></RequireAuth>}/>
+            <Route path="/searchresults" render={() => <RequireAuth><SearchResults/></RequireAuth>}/>
+            <Route path="/users/add" render={() => <RequireAuth><AddNewUser/></RequireAuth>}/>
+            <Route path="/user/edit/:user_id" render={() => <RequireAuth><EditUser/></RequireAuth>}/>
+            <Route path="/user/view/:user_id" render={() => <RequireAuth><ViewUser/></RequireAuth>}/>
+            <Route component={Error404}  /> 
         </Switch>
 
      
         </div>
+        </Suspense>
       </ConstProvider>
       
    

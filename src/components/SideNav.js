@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 
 import Context from "../contexts/Context";
 
-function SideNav(props) {
-  const { setSideBarState, sideBarState } = useContext(Context);
+function SideNav() {
+  const { setDisplaySideBar, displaySideBar } = useContext(Context);
 
   return ReactDOM.createPortal(
     <>
-      {sideBarState && (
+      {displaySideBar && (
         <div
           className="sideNavContainer"
-          onClick={() => setSideBarState(false)}
+          onClick={() => setDisplaySideBar(false)}
         >
           <div
             className="sideNavInnerContainer"
@@ -23,23 +23,25 @@ function SideNav(props) {
                 <i
                   className="fa fa-window-close"
                   aria-hidden="true"
-                  onClick={() => setSideBarState(false)}
+                  onClick={() => setDisplaySideBar(false)}
                 ></i>
               </div>
-
-              <Link to="/" onClick={() => setSideBarState(false)}>
+              <Link to="/login" onClick={() => setDisplaySideBar(false)}>
+                <button className="btn">Login</button>
+              </Link>
+              <Link to="/" onClick={() => setDisplaySideBar(false)}>
                 <button className="btn">Dashboard</button>
               </Link>
-              <Link to="/newticket" onClick={() => setSideBarState(false)}>
+              <Link to="/new-ticket" onClick={() => setDisplaySideBar(false)}>
                 <button className="btn">New Ticket</button>
               </Link>
-              <Link to="/onholdtickets" onClick={() => setSideBarState(false)}>
+              <Link to="/onholdtickets" onClick={() => setDisplaySideBar(false)}>
                 <button className="btn">On Hold</button>
               </Link>
-              <Link to="/backlog" onClick={() => setSideBarState(false)}>
+              <Link to="/backlog" onClick={() => setDisplaySideBar(false)}>
                 <button className="btn">Backlog</button>
               </Link>
-              <Link to="/users" onClick={() => setSideBarState(false)}>
+              <Link to="/users" onClick={() => setDisplaySideBar(false)}>
                 <button className="btn">Users</button>
               </Link>
             </div>

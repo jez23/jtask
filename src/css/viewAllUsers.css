@@ -3,8 +3,7 @@
     margin-left: 20px;
     margin-bottom: 5px;
 }
-
-.add input {
+.add input { 
     width: 100%;
     padding: 15px;
     box-sizing: border-box;
@@ -34,12 +33,17 @@
     margin-bottom: 10px;
     grid-template-areas: " imagePhoto imagePhoto metaInfo metaInfo metaInfo metaInfo metaInfo metaInfo metaInfo metaInfo metaInfo metaInfo";
     border-radius: 10px;
-
 }
 .addUserImage {
     grid-area: imagePhoto;
-    font-size: 40px;
     text-align: center;
+    padding: 10px;
+}
+.addUserImage img{
+    border-radius: 10px;
+    max-height: 200px;
+    object-fit: contain;
+    max-width: 100%;
 }
 .addUserMeta{
     grid-area: metaInfo;
@@ -69,6 +73,7 @@
     text-align: center;
     grid-area: removeEditViewButtons;
     border-radius: 0px 10px 10px 0px;
+    align-items: center;
 }
 .userTicketsAssigned{
     grid-area: removeEditViewButtons;
@@ -80,9 +85,6 @@
         margin-bottom: 10px;
         grid-template-areas: " imagePhoto imagePhoto"
                             "metaInfo metaInfo";
-    }
-    .addUserImage{
-        display: none;
     }
     .addUserMeta{
       

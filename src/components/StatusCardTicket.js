@@ -2,87 +2,82 @@ import React, { useRef, useState, useContext } from "react";
 import Context from "../contexts/Context";
 import { Link } from "react-router-dom";
 
-function StatusCardTicket(props) {
+function StatusCardTicket({ ticket, onDrag }) {
   const {
-    selectedTicket,
-    handleTicketEdit,
-    handleTicketSelect
+    handleTicketEdit
   } = useContext(Context);
+
 
   const date = new Date();
   const getYear = date.getFullYear();
   function dragStartHandlerStart(event) {
-    props.onDrag(props.id);
+    onDrag(ticket.id);
   }
-  function handleChange(changes) {
-    handleTicketEdit(props.id, { ...selectedTicket, ...changes });
-  }
+
   const statusButton = useRef();
   const [drop, dropFunction] = useState(false);
   function statusDropDown(status, e) {
     dropFunction(status);
   }
-  function editModal() {
-    handleTicketSelect(props.id);
-  }
-  function viewTicket() {
-    handleTicketSelect(props.id);
-  }
-  function selectTicketOnHover() {
-    handleTicketSelect(props.id);
+  function selectTicketOnHover(id) {
     statusDropDown(true);
   }
   function handleOnHold() {
     statusDropDown(false);
-    handleChange({ status: "On Hold" });
+    ticket.status = "On Hold";
+    handleTicketEdit(ticket.id, { ...ticket });
+
   }
-  function handleBackLog() {
+  function handleBackLog(id) {
     statusDropDown(false);
-    handleChange({ status: "Backlog" });
+
+    ticket.status = "Backlog";
+    handleTicketEdit(id, { ...ticket });
   }
 
+ 
   return (
     <div
       className="statusCardTicket"
       draggable="true"
-      id={props.id}
+      id={ticket.id}
       onDragStart={dragStartHandlerStart}
     >
-      <div className="statusCardTicket__info">
+      <div className="statusCardTicket__info" >
         <div
           className={`statusCardTicket__priority ${
-            props.status === "New"
+            ticket.status === "New"
               ? "status_new"
-              : props.status === "Open"
+              : ticket.status === "Open"
               ? "status_open"
-              : props.status === "In Progress"
+              : ticket.status === "In Progress"
               ? "status_progress"
-              : props.status === "Resolved"
+              : ticket.status === "Resolved"
               ? "status_resolved"
               : "status_closed"
           }`}
         >
-          <p className="statusUpdate">{props.status}</p>
+          <p className="statusUpdate">{ticket.status}</p>
         </div>
-        <h3>{props.title}</h3>
+        <h3>{ticket.title}</h3>
         <p>Date: {getYear}</p>
-        <p>{props.id}</p>
+        <p>Ticket ID: {ticket.id}</p>
       </div>
       <div className="statusCardTicket__nav">
         <div className="viewTicket">
-          <Link to="/ViewTicket" onClick={() => viewTicket()}>
+          <Link to={`/ViewTicket/${ticket.id}`}>
             <i className="fa fa-eye"></i>
           </Link>
         </div>
         <div className="editTicket">
-          <Link to="/editticket" onClick={() => editModal()}>
+          <Link to={`/edit-ticket/${ticket.id}`}>
             <i className="fa fa-pencil"></i>
           </Link>
         </div>
         <div
           className="archiveButton"
-          onMouseEnter={() => selectTicketOnHover()}
-          onTouchStart={() => selectTicketOnHover()}
+          onMouseEnter={() => selectTicketOnHover(ticket.id)}
+          onTouchStart={() => selectTicketOnHover(ticket.id)}
           onMouseLeave={(e) => statusDropDown(false, e)}
           onTouchCancel={(e) => statusDropDown(false, e)}
         >
@@ -90,8 +85,8 @@ function StatusCardTicket(props) {
           {drop && (
             <div className="reassignTicket" ref={statusButton}>
               <ul>
-                <li onClick={(e) => handleOnHold()}>On Hold</li>
-                <li onClick={(e) => handleBackLog()}>Add To BackLog</li>
+                <li onClick={(e) => handleOnHold(ticket.id)}>On Hold</li>
+                <li onClick={(e) => handleBackLog(ticket.id)}>Add To BackLog</li>
               </ul>
             </div>
           )}

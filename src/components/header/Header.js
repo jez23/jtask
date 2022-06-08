@@ -1,19 +1,23 @@
-import React, { useContext } from "react";
+import React from "react";
 import Logo from "./Logo";
-import Nav from "./Nav";
+import Nav from "../navigation/Nav";
 import Search from "./Search.js";
-import Context from "../../contexts/Context";
+import Account from "./Account";
+import MobileNav from "../navigation/MobileNav";
 
-function Header(props) {
-  const { setSideBarState } = useContext(Context);
+const Header = () => {
+  
   return (
     <div className="header">
-      <Logo />
-      <Nav />
-      <button className="mobile_nav" onClick={() => setSideBarState(true)}>
-        <i className="fa fa-bars" aria-hidden="true"></i>
-      </button>
-      <Search />
+    <div className="header__meta"> 
+     <Search />
+     <Logo />
+     <Account />
+     <MobileNav />
+    </div>
+     <div className="navigation">
+     <Nav />
+     </div>
     </div>
   );
 }

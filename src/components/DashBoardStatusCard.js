@@ -5,39 +5,37 @@ import StatusCardTicket from "./StatusCardTicket";
 import Context from "../contexts/Context";
 
 function DashBoardStatusCard(props) {
-  const { ticketsWithState, handleTicketEdit, newTicketFunction } =
+  const { allTickets, handleTicketEdit } =
     useContext(Context);
 
-  const dragOver = useCallback(() => {
+  const dragOver = useCallback((e) => {
+    e.preventDefault();
+
     handleChange(props.title, props.draggable_id);
   }, [props.title, props.draggable_id]);
 
+ 
   function handleChange(changes, id) {
-    let ticket = ticketsWithState.find((ticket) => ticket.id === id);
-
+    let ticket = allTickets.find((ticket) => ticket.id === id);
     ticket.status = changes;
     handleTicketEdit(id, ticket);
-  }
-
-  function newTicket() {
-    newTicketFunction(true);
   }
 
   return (
     <div className="statusCardContainer">
       <h3>{props.title}</h3>
-      <div className="dashBoardStatusCard" onDragEnter={dragOver}>
-        {ticketsWithState
+      <div className="dashBoardStatusCard" onDragEnter={dragOver} /* onDragOver={() => handleGhost()} */>
+        {allTickets
           .filter((ticket) => ticket.status === props.title)
           .map((ticket) => (
             <StatusCardTicket
-              {...ticket}
+              ticket={ticket}
               key={ticket.id}
               onDrag={props.onDrag}
             />
           ))}
       </div>
-      <Link to="/newticket" onClick={() => newTicket()}>
+      <Link to="/new-ticket">
         <button className="btn">Add new ticket</button>
       </Link>
     </div>

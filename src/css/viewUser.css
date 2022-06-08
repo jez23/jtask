@@ -31,6 +31,10 @@
     padding: 20px;
     text-align: center;
 }
+.profileContainer__profile__image img{
+    border-radius: 10px;
+    max-width: 100%;
+}
 
 .profileContainer__profile__image .fa-user-circle{
     font-size: 140px;

@@ -1,0 +1,261 @@
+[
+  {
+    "id": 1,
+    "title": "As a [type of user], I want to [perform some task] so that I can [achieve some goal].",
+    "date": "",
+    "summary": "Given that [some context], when [some action is carried out], then [a set of observable outcomes should occur].",
+    "type": "Bug",
+    "priority": "Blocker",
+    "status": "New",
+    "resolution": false,
+    "points": 1,
+    "sprint": 4,
+    "assignedTo": 5,
+    "comments": []
+  },
+  {
+    "id": 2,
+    "title": "As a [type of user], I want to [perform some task] so that I can [achieve some goal].",
+    "date": "",
+    "summary": "Given that [some context], when [some action is carried out], then [a set of observable outcomes should occur].",
+    "type": "Bug",
+    "priority": "High",
+    "status": "New",
+    "resolution": false,
+    "points": 1,
+    "sprint": 4,
+    "assignedTo": 3,
+    "comments": [
+      {
+        "id": "5",
+        "comment": "Great progression with this ticket so far, keep up the good work."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "As a [type of user], I want to [perform some task] so that I can [achieve some goal].",
+    "date": "",
+    "summary": "Given that [some context], when [some action is carried out], then [a set of observable outcomes should occur].",
+    "type": "Bug",
+    "priority": "Low",
+    "status": "New",
+    "resolution": false,
+    "points": 2,
+    "sprint": 4,
+    "assignedTo": 2,
+    "comments": [
+      {
+        "id": "4",
+        "comment": "Can I have an update on this ticket please?"
+      },
+      {
+        "id": "2",
+        "comment": "I've started this ticket, however, I'm having a few issues."
+      },
+      {
+        "id": "4",
+        "comment": "OK, thank you, let me know when you're ready to progress."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "As a [type of user], I want to [perform some task] so that I can [achieve some goal].",
+    "date": "",
+    "summary": "Given that [some context], when [some action is carried out], then [a set of observable outcomes should occur].",
+    "type": "Bug",
+    "priority": "Low",
+    "status": "Open",
+    "resolution": false,
+    "points": 3,
+    "sprint": 4,
+    "assignedTo": 5,
+    "comments": [
+      {
+        "id": "3",
+        "comment": "Has this ticket been approved?"
+      },
+      {
+        "id": "2",
+        "comment": "Yes, this ticket was discussed in the scrum meeting and has been approved."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "As a [type of user], I want to [perform some task] so that I can [achieve some goal].",
+    "date": "",
+    "summary": "Given that [some context], when [some action is carried out], then [a set of observable outcomes should occur].",
+    "type": "Bug",
+    "priority": "Low",
+    "status": "In Progress",
+    "resolution": false,
+    "points": 5,
+    "sprint": 4,
+    "assignedTo": 3,
+    "comments": [
+      {
+        "id": "4",
+        "comment": "Could please change the priority of this ticket please? It's blocking other features."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "As a [type of user], I want to [perform some task] so that I can [achieve some goal].",
+    "date": "",
+    "summary": "Given that [some context], when [some action is carried out], then [a set of observable outcomes should occur].",
+    "type": "Bug",
+    "priority": "Low",
+    "status": "In Progress",
+    "resolution": false,
+    "points": 100,
+    "sprint": 4,
+    "assignedTo": 4,
+    "comments": [
+      {
+        "id": "3",
+        "comment": "I'm moving this ticket to 'in progress' I'm hoping to have it finsihed by the end of the week."
+      },
+      {
+        "id": "5",
+        "comment": "Great! Thanks for the update."
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "As a [type of user], I want to [perform some task] so that I can [achieve some goal].",
+    "date": "",
+    "summary": "Given that [some context], when [some action is carried out], then [a set of observable outcomes should occur].",
+    "type": "Bug",
+    "priority": "Low",
+    "status": "Resolved",
+    "resolution": false,
+    "points": 1,
+    "sprint": 4,
+    "assignedTo": 2,
+    "comments": [
+      {
+        "id": "5",
+        "comment": "I'm resolving this ticket as it has been fixed."
+      },
+      {
+        "id": "2",
+        "comment": "Do you want me to 'verify' it?"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "As a [type of user], I want to [perform some task] so that I can [achieve some goal].",
+    "date": "",
+    "summary": "Given that [some context], when [some action is carried out], then [a set of observable outcomes should occur].",
+    "type": "Bug",
+    "priority": "Low",
+    "status": "Closed",
+    "resolution": false,
+    "points": 2,
+    "sprint": 4,
+    "assignedTo": 4,
+    "comments": [
+      {
+        "id": "4",
+        "comment": "This ticket has been completed, so I'm closing this ticket."
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "title": "As a [type of user], I want to [perform some task] so that I can [achieve some goal].",
+    "date": "",
+    "summary": "Given that [some context], when [some action is carried out], then [a set of observable outcomes should occur].",
+    "type": "Bug",
+    "priority": "Low",
+    "status": "On Hold",
+    "resolution": false,
+    "points": 3,
+    "sprint": 4,
+    "assignedTo": 1,
+    "comments": [
+      {
+        "id": "5",
+        "comment": "Why is this ticket on hold?"
+      },
+      {
+        "id": "3",
+        "comment": "I spoke to the other team and they said this feature isn't ready yet."
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "title": "As a [type of user], I want to [perform some task] so that I can [achieve some goal].",
+    "date": "",
+    "summary": "Given that [some context], when [some action is carried out], then [a set of observable outcomes should occur].",
+    "type": "Bug",
+    "priority": "Low",
+    "status": "On Hold",
+    "resolution": false,
+    "points": 5,
+    "sprint": 4,
+    "assignedTo": 1,
+    "comments": [
+      {
+        "id": "2",
+        "comment": "Hello, should I start this ticket?"
+      },
+      {
+        "id": "3",
+        "comment": "No, don't start this ticket yet, we'll discuss this in the scrum meeting."
+      },
+      {
+        "id": "5",
+        "comment": "Yes, I agree with Mark, don't start this ticket yet."
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "title": "As a [type of user], I want to [perform some task] so that I can [achieve some goal].",
+    "date": "",
+    "summary": "Given that [some context], when [some action is carried out], then [a set of observable outcomes should occur].",
+    "type": "Bug",
+    "priority": "Low",
+    "status": "Backlog",
+    "resolution": false,
+    "points": 1,
+    "sprint": 4,
+    "assignedTo": 1,
+    "comments": [
+      {
+        "id": "5",
+        "comment": "I'm moving this ticket to the backlog as it's not needed until next month."
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "title": "As a [type of user], I want to [perform some task] so that I can [achieve some goal].",
+    "date": "",
+    "summary": "Given that [some context], when [some action is carried out], then [a set of observable outcomes should occur].",
+    "type": "Bug",
+    "priority": "Low",
+    "status": "Backlog",
+    "resolution": false,
+    "points": 2,
+    "sprint": 4,
+    "assignedTo": 1,
+    "comments": [
+      {
+        "id": "2",
+        "comment": "This seems to be a bigger issue that we'll need to discuss."
+      },
+      {
+        "id": "3",
+        "comment": "OK, I'll add this ticket to the backlog for now."
+      }
+    ]
+  }
+]

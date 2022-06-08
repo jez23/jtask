@@ -1,0 +1,17 @@
+.header__account__loggedIn{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.header__account__loggedIn img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.header__account__loggedIn__btn{
+    display: flex;
+    align-items: center;
+}
+.header__account .btn{
+    width: 100px;
+}

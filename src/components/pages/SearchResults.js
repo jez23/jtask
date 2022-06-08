@@ -12,12 +12,7 @@ const SearchResults = () => {
         <i className="fa fa-user-plus" aria-hidden="true"></i> SEARCH RESULTS
       </h2>
       {searchTerm && <h4>Showing Results for: "{searchTerm}"</h4>}
-
-      {showSearchResultsOnPage().map((ticket) => {
-        return (
-          <StoredStatusCard key={ticket.id} {...ticket}></StoredStatusCard>
-        );
-      })}
+      {showSearchResultsOnPage().map(ticket => <StoredStatusCard key={ticket.id} ticket={ticket}></StoredStatusCard>)}
     </div>
   );
 };

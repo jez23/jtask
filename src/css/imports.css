@@ -1,17 +1,18 @@
 @import './global.css';
 @import './header.css';
 @import './sideNav.css';
+@import './loaderSpinner.css';
+@import './forms.css';
 @import './search.css';
-@import './sprintDropDown.css';
 @import './dashBoardOverView.css';
 @import './dashBoardStatusCard.css';
 @import './statusCardTicket.css';
-@import './userModal.css';
+@import './viewAllUsers.css';
 @import './addUser.css';
 @import './viewUser.css';
-
-@import './backlogModal.css';
-@import './viewTicketModal.css';
+@import './login.css';
+@import './backlog.css';
+@import './viewTicket.css';
 @import './storedStatusCard.css';
 @import './display.css';
 @import './error404.css';

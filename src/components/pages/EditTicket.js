@@ -1,20 +1,33 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Context from "../../contexts/Context";
+import { useParams } from "react-router-dom";
 
-function EditModal(props) {
-  const { selectedTicket, handleTicketEdit, usersWithState } =
+const EditTicket = () => {
+  
+  const { ticket_id } = useParams(); 
+
+  const {handleTicketEdit, allUsers, allTickets } =
     useContext(Context);
+
+    const [selectedTicket, setSelectedTicket] = useState("");
+    const [loading, isLoading] = useState(true);
 
   function handleChange(changes) {
     handleTicketEdit(selectedTicket.id, { ...selectedTicket, ...changes });
   }
+
+  useEffect(() => {
+    const chosenTicket = allTickets.filter(ticket => ticket.id === +ticket_id);
+    setSelectedTicket(chosenTicket[0]);
+    isLoading(false);
+  }, [ticket_id, allTickets])
 
   return (
     <div className="center60">
       <h2>
         <i className="fa fa-pencil" aria-hidden="true"></i> Edit TASK
       </h2>
-      <form>
+      {loading ? <p>Loading...</p> : <form>
         <label htmlFor="editTitle">Edit Title</label>
         <input
           id="editTitle"
@@ -77,9 +90,9 @@ function EditModal(props) {
           value={selectedTicket.assignedTo}
           onChange={(e) => handleChange({ assignedTo: e.target.value })}
         >
-          {usersWithState.map((el) => (
-            <option value={el.firstname} key={el.id}>
-              {el.firstname}
+          {allUsers.map((user) => (
+            <option value={user.id} key={user.id}>
+              {`${user.firstname} ${user.lastname}`}
             </option>
           ))}
         </select>
@@ -96,9 +109,9 @@ function EditModal(props) {
           <option value="Verified">Verified</option>
           <option value="Closed">Closed</option>
         </select>
-      </form>
+      </form>}
     </div>
   );
 }
 
-export default EditModal;
+export default EditTicket;

@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import DashBoardStatusCard from "../DashBoardStatusCard";
 
-/* import Context from '../contexts/Context'; */
-
 const lists = [
   { title: "New" },
   { title: "Open" },
@@ -12,7 +10,7 @@ const lists = [
   { title: "Closed" },
 ];
 
-function DashBoardOverView(props) {
+const DashBoardOverView = () => {
   const [draggable_id, setDraggable_id] = useState("");
 
   return (
