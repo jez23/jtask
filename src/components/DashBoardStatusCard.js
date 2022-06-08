@@ -24,9 +24,8 @@ function DashBoardStatusCard(props) {
   return (
     <div className="statusCardContainer">
       <h3>{props.title}</h3>
-      <div className="dashBoardStatusCard" onDragEnter={dragOver} /* onDragOver={() => handleGhost()} */>
-        {allTickets
-          .filter((ticket) => ticket.status === props.title)
+      {allTickets && <div className="dashBoardStatusCard" onDragEnter={dragOver}>
+        {allTickets.filter((ticket) => ticket.status === props.title)
           .map((ticket) => (
             <StatusCardTicket
               ticket={ticket}
@@ -34,7 +33,7 @@ function DashBoardStatusCard(props) {
               onDrag={props.onDrag}
             />
           ))}
-      </div>
+      </div>}
       <Link to="/new-ticket">
         <button className="btn">Add new ticket</button>
       </Link>

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import Context from "../../contexts/Context";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import deletedUser from "../../img/deleted.png";
+/* import deletedUser from "../../img/deleted.png"; */
 
 function ViewTicket() {
   const { ticket_id } = useParams();
@@ -106,7 +106,7 @@ function ViewTicket() {
                         <img src={`${commentBy[0].img}`} alt="user who made the comment"/>
                       </Link>
                     ) : (
-                      <img src={deletedUser} alt="deleted user"/>
+                      <img src={'https://jezblackmore.com/jtask/fakeUsers/deleted.png'} alt="deleted user"/>
                     )}
                   </div>
                   <div className="commentMeta">
