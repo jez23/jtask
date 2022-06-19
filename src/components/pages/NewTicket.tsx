@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 
 import Context from "../../contexts/Context";
 
-function NewTicket() {
+const NewTicket: React.FC = () => {
   
   const history = useHistory();
 
@@ -13,15 +13,15 @@ function NewTicket() {
     allTickets
   } = useContext(Context);
 
-  const [title, setTitle] = useState("");
-  const [summary, setSummary] = useState("");
-  const [type, setType] = useState("");
-  const [priority, setPriority] = useState("");
-  const [points, setPoints] = useState("");
-  const [assignee, setAssignee] = useState(1);
-  const [status, setStatus] = useState("");
+  const [title, setTitle] = useState<string>("");
+  const [summary, setSummary] = useState<string>("");
+  const [type, setType] = useState<string>("");
+  const [priority, setPriority] = useState<string>("");
+  const [points, setPoints] = useState<string>("");
+  const [assignee, setAssignee] = useState<number | string>(1);
+  const [status, setStatus] = useState<string>("");
  
-  function handleSubmit(e) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     const newTicket = {
@@ -71,7 +71,6 @@ function NewTicket() {
         rows={5}
         cols={5}
           id="summary"
-          type="text"
           placeholder="summary"
           value={summary}
           onChange={(e) => setSummary(e.target.value)}
@@ -122,7 +121,7 @@ function NewTicket() {
           value={assignee}
           onChange={(e) => setAssignee(e.target.value)}
         >
-          {allUsers.map((user) => (
+          {allUsers.map((user: { id: string, firstname: string, lastname: string}) => (
             <option value={user.id} key={user.id}>
               {`${user.firstname} ${user.lastname}`}
             </option>
@@ -143,7 +142,7 @@ function NewTicket() {
           <option value="Verified">Verified</option>
           <option value="Closed">Closed</option>
         </select>
-        <button type="sumbit" className="btn">
+        <button type="submit" className="btn">
           Create Ticket
         </button>
       </form>

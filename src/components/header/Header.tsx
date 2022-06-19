@@ -1,11 +1,11 @@
 import React from "react";
 import Logo from "./Logo";
 import Nav from "../navigation/Nav";
-import Search from "./Search.js";
+import Search from "./Search";
 import Account from "./Account";
 import MobileNav from "../navigation/MobileNav";
 
-const Header = () => {
+const Header: React.FC  = () => {
   
   return (
     <div className="header">

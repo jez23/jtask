@@ -1,8 +1,12 @@
 import React, { useContext } from "react";
 import Context from "../contexts/Context";
-import Unauthorised from "../components/Unauthorised";
+import Unauthorised from "./Unauthorised";
 
-const RequireAuth = ({ children }) => {
+interface Props {
+  children: JSX.Element
+}
+
+const RequireAuth: React.FC<Props> = ({ children }) => {
 
     const {
         loggedInUser

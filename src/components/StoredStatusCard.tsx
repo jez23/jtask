@@ -1,15 +1,21 @@
 import React, { useState, useContext } from "react";
-
 import { Link } from "react-router-dom";
-
 import Context from "../contexts/Context";
 
-function StoredStatusCard({ ticket }) {
+interface Props {
+  ticket: {
+    id: number,
+    status: string,
+    title: string
+  }
+}
+
+const StoredStatusCard: React.FC<Props> = ({ ticket }) => {
   const { handleTicketEdit } = useContext(Context);
 
   const [newStatusShow, setNewStatusShow] = useState(false);
 
-  function handleChange(changes) {
+  function handleChange(changes: any) {
     handleTicketEdit(ticket.id, { ...ticket, ...changes });
   }
 

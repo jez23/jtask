@@ -2,22 +2,58 @@ import React, { useContext, useState, useEffect } from "react";
 import Context from "../../contexts/Context";
 import { useParams } from "react-router-dom";
 
-const EditTicket = () => {
-  
-  const { ticket_id } = useParams(); 
+type TicketParams = {
+  ticket_id: string;
+};
 
-  const {handleTicketEdit, allUsers, allTickets } =
+type ticketObj = {
+  comments?: {
+    id: string,
+    comment: string
+  },
+  id?: string,
+  title?: string,
+  firstname?: string,
+  lastname?: string,
+  type?: string,
+  priority?: string,
+  status?: string,
+  points?: string,
+  summary?: string,
+  assignedTo?: string
+}
+
+const EditTicket: React.FC = () => {
+
+  const { ticket_id } = useParams<TicketParams>();
+
+  const { handleTicketEdit, allUsers, allTickets } =
     useContext(Context);
 
-    const [selectedTicket, setSelectedTicket] = useState("");
-    const [loading, isLoading] = useState(true);
+  const [selectedTicket, setSelectedTicket] = useState<ticketObj>({
+    comments: {
+      id: "",
+      comment: ""
+    },
+    id: "",
+    title: "",
+    firstname: "",
+    lastname: "",
+    type: "",
+    priority: "",
+    status: "",
+    points: "",
+    summary: "",
+    assignedTo: ""
+  });
+  const [loading, isLoading] = useState<boolean>(true);
 
-  function handleChange(changes) {
+  function handleChange(changes: any) {
     handleTicketEdit(selectedTicket.id, { ...selectedTicket, ...changes });
   }
 
   useEffect(() => {
-    const chosenTicket = allTickets.filter(ticket => ticket.id === +ticket_id);
+    const chosenTicket = allTickets.filter((ticket: { id: number }) => ticket.id === +ticket_id);
     setSelectedTicket(chosenTicket[0]);
     isLoading(false);
   }, [ticket_id, allTickets])
@@ -90,7 +126,7 @@ const EditTicket = () => {
           value={selectedTicket.assignedTo}
           onChange={(e) => handleChange({ assignedTo: e.target.value })}
         >
-          {allUsers.map((user) => (
+          {allUsers.map((user: { id: number, lastname: string, firstname: string }) => (
             <option value={user.id} key={user.id}>
               {`${user.firstname} ${user.lastname}`}
             </option>

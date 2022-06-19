@@ -2,7 +2,17 @@ import React, { useRef, useState, useContext } from "react";
 import Context from "../contexts/Context";
 import { Link } from "react-router-dom";
 
-function StatusCardTicket({ ticket, onDrag }) {
+interface Props {
+  ticket: {
+    id: string,
+    status: string,
+    title: string
+  },
+  onDrag: (string: string) => string
+}
+
+
+const StatusCardTicket: React.FC<Props> = ({ ticket, onDrag }) => {
   const {
     handleTicketEdit
   } = useContext(Context);
@@ -10,25 +20,25 @@ function StatusCardTicket({ ticket, onDrag }) {
 
   const date = new Date();
   const getYear = date.getFullYear();
-  function dragStartHandlerStart(event) {
+  function dragStartHandlerStart() {
     onDrag(ticket.id);
   }
 
-  const statusButton = useRef();
+  const statusButton = useRef<HTMLDivElement>(null);
   const [drop, dropFunction] = useState(false);
-  function statusDropDown(status, e) {
+  function statusDropDown(status: boolean, e?: any) {
     dropFunction(status);
   }
-  function selectTicketOnHover(id) {
+  function selectTicketOnHover(id: any) {
     statusDropDown(true);
   }
-  function handleOnHold() {
+  function handleOnHold(ticket: any) {
     statusDropDown(false);
     ticket.status = "On Hold";
     handleTicketEdit(ticket.id, { ...ticket });
 
   }
-  function handleBackLog(id) {
+  function handleBackLog(id: string) {
     statusDropDown(false);
 
     ticket.status = "Backlog";
@@ -78,14 +88,14 @@ function StatusCardTicket({ ticket, onDrag }) {
           className="archiveButton"
           onMouseEnter={() => selectTicketOnHover(ticket.id)}
           onTouchStart={() => selectTicketOnHover(ticket.id)}
-          onMouseLeave={(e) => statusDropDown(false, e)}
-          onTouchCancel={(e) => statusDropDown(false, e)}
+          onMouseLeave={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => statusDropDown(false, e)}
+          onTouchCancel={(e: React.TouchEvent<HTMLDivElement>) => statusDropDown(false, e)}
         >
           <i className="fa fa-archive" aria-hidden="true"></i>
           {drop && (
             <div className="reassignTicket" ref={statusButton}>
               <ul>
-                <li onClick={(e) => handleOnHold(ticket.id)}>On Hold</li>
+                <li onClick={(e) => handleOnHold(ticket)}>On Hold</li>
                 <li onClick={(e) => handleBackLog(ticket.id)}>Add To BackLog</li>
               </ul>
             </div>

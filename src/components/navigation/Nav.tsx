@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Nav() {
-
+const Nav: React.FC = () => {
   return (
     <div className="header__nav">
         <Link to="/">Dashboard</Link>

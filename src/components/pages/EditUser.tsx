@@ -2,21 +2,42 @@ import React, { useContext, useState, useEffect } from "react";
 import Context from "../../contexts/Context";
 import { useParams } from "react-router-dom";
 
-const EditUser = () => {
+type UserParams = {
+  user_id: string;
+};
+type updatedUser = {
+  id: number;
+  firstname: string;
+  lastname: string;
+  jobTitle: string;
+  email: string;
+  img: string;
+  role: string;
+}
+
+const EditUser: React.FC = () => {
   const { allUsers, setAllUsers } = useContext(Context);
 
-  const { user_id } = useParams();
+  const { user_id } = useParams<UserParams>();
 
-  const [selectedUser, setSelectedUser] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [jobTitle, setJobTitle] = useState("");
-  const [email, setEmail] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
+  const [selectedUser, setSelectedUser] = useState<updatedUser>({
+    id: 0,
+    firstname: "",
+    lastname: "",
+    jobTitle: "",
+    email: "",
+    img: "",
+    role: "",
+  });
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
+  const [jobTitle, setJobTitle] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const handleEditUser = (e) => {
+  const handleEditUser = (e: React.FormEventHandler<HTMLFormElement> | any) => {
     e.preventDefault();
-    const updatedUser = {
+    const updatedUser: updatedUser = {
       id: selectedUser.id,
       firstname: firstName,
       lastname: lastName,
@@ -25,18 +46,18 @@ const EditUser = () => {
       img: selectedUser.img,
       role: selectedUser.role,
     };
-    const IndexOfUserToUpdate = allUsers.findIndex(
-      (user) => user.id === selectedUser.id
-    );
-    const allUsersCopy = [...allUsers];
-    allUsersCopy.splice([IndexOfUserToUpdate], 1, updatedUser);
+    const IndexOfUserToUpdate: number = allUsers.findIndex(
+      (user: any ) => user.id === selectedUser.id
+    )[0];
+    const allUsersCopy: any[] = [...allUsers];
+    allUsersCopy.splice(+IndexOfUserToUpdate, 1, updatedUser);
 
     localStorage.setItem('allUsers', JSON.stringify([...allUsersCopy]));
     setAllUsers(allUsersCopy);
   };
 
   useEffect(() => {
-    const chosen = allUsers.filter((user) => user.id === +user_id);
+    const chosen = allUsers.filter((user: { id: number }) => user.id === +user_id);
 
     setFirstName(chosen[0].firstname);
     setLastName(chosen[0].lastname);

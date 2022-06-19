@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import Context from "../../contexts/Context";
 
-function Search() {
+const Search: React.FC  = () => {
   const { searchTerm, setSearchTerm } = useContext(Context);
   const history = useHistory();
 
-  const handleSearch = (word) => {
+  const handleSearch = (word: string) => {
     setSearchTerm(word);
     history.push("/searchresults");
   };

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import Context from "../contexts/Context";
 
-function SideNav() {
+const SideNav: React.FC = () => {
   const { setDisplaySideBar, displaySideBar } = useContext(Context);
 
   return ReactDOM.createPortal(
@@ -49,7 +49,7 @@ function SideNav() {
         </div>
       )}
     </>,
-    document.getElementById("mobile_nav")
+    document.getElementById("mobile_nav") as HTMLInputElement 
   );
 }
 

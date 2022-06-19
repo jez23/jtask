@@ -3,18 +3,18 @@ import { useHistory } from "react-router-dom";
 
 import Context from "../../contexts/Context";
 
-const AddNewUser = () => {
+const AddNewUser: React.FC = () => {
   const { handleAddUser, allUsers } = useContext(Context);
   const history = useHistory();
 
-  const [firstName, setFirstname] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [jobTitle, setJobTitle] = useState("");
-  const [email, setEmail] = useState("");
-  const [image, setImage] = useState("");
-  const [role, setRole] = useState("");
+  const [firstName, setFirstname] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
+  const [jobTitle, setJobTitle] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [image, setImage] = useState<any | null>("");
+  const [role, setRole] = useState<string>("");
 
-  const addUser = (e) => {
+  const addUser = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const regEx = /\S+@\S+\.\S+/gi;
@@ -92,11 +92,11 @@ const AddNewUser = () => {
         <input
           id="profileImage"
           required
-          onChange={(e) => setImage(e.target.files[0])}
+          onChange={(e: any) => setImage(e.target.files[0])}
           type="file"
         />
 
-        <button type="sumbit" className="btn">
+        <button type="submit" className="btn">
           Create User
         </button>
       </form>

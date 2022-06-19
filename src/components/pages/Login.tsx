@@ -2,14 +2,14 @@ import React, { useContext, useState } from "react";
 import Context from "../../contexts/Context";
 import { useHistory } from "react-router-dom";
 
-const Login = () => {
+const Login: React.FC = () => {
   const history = useHistory();
   const { allUsers, setLoggedInUser } = useContext(Context);
-  const [selectUserId, setSelectUserId] = useState("");
+  const [selectUserId, setSelectUserId] = useState<string>("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEventHandler<HTMLFormElement> | any) => {
     e.preventDefault();
-    const selectedUser = allUsers.find((user) => user.id === +selectUserId);
+    const selectedUser = allUsers.find((user: { id: number }) => user.id === +selectUserId);
     setLoggedInUser(selectedUser);
     history.push("/");
   };
@@ -21,7 +21,7 @@ const Login = () => {
           <label htmlFor="username">User name</label>
           <select onChange={(e) => setSelectUserId(e.target.value)} required>
             <option value="">Select User</option>
-            {allUsers.map((user, index) => (
+            {allUsers.map((user: { id : string, firstname: string}, index: number) => (
               <option key={`${user}-${index}`} value={user.id}>
                 {user.firstname}
               </option>

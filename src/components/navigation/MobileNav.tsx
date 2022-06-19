@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Context from "../../contexts/Context";
 
-const MobileNav = () => {
+const MobileNav: React.FC = () => {
 
     const { setDisplaySideBar } = useContext(Context);
     

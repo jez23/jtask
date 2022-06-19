@@ -4,18 +4,62 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 /* import deletedUser from "../../img/deleted.png"; */
 
-function ViewTicket() {
-  const { ticket_id } = useParams();
+type TicketParams = {
+  ticket_id: string;
+};
+
+type ticketObj = {
+  comments: {
+    id: any
+    comment: any
+  }[],
+  id: string,
+  title: string,
+  firstname: string,
+  lastname: string,
+  type: string,
+  priority: string,
+  status: string,
+  points: string,
+  summary: string,
+}
+
+type AssignedUserObj = {
+  id: string,
+  firstname: string,
+  lastname: string
+}
+
+const ViewTicket: React.FC = () => {
+  const { ticket_id } = useParams<TicketParams>();
 
   const { handleTicketEdit, allUsers, loggedInUser, allTickets } =
     useContext(Context);
 
-  const [comment, setComment] = useState("");
-  const [assignedUser, setAssignedUser] = useState("");
-  const [selectedTicket, setSelectedTicket] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
+  const [comment, setComment] = useState<string>("");
+  const [assignedUser, setAssignedUser] = useState<AssignedUserObj>({
+    id: "",
+    firstname: "",
+    lastname: ""
+  });
+  const [selectedTicket, setSelectedTicket] = useState<ticketObj>({
+    comments: [{
+      id: "",
+      comment: ""
+    }],
+    id: "",
+    title: "",
+    firstname: "",
+    lastname: "",
+    type: "",
+    priority: "",
+    status: "",
+    points: "",
+    summary: ""
+  });
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  function handleSubmit(e) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     const newCommentObj = {
@@ -31,13 +75,13 @@ function ViewTicket() {
 
   useEffect(() => {
     const chosenTicket = allTickets.filter(
-      (ticket) => ticket.id === +ticket_id
+      (ticket: { id: number }) => ticket.id === +ticket_id
     );
 
     if (chosenTicket.length > 0) {
       setSelectedTicket(chosenTicket[0]);
       const getUser = allUsers.filter(
-        (user) => user.id === +chosenTicket[0].assignedTo
+        (user: { id: number }) => user.id === +chosenTicket[0].assignedTo
       );
       setAssignedUser(getUser[0]);
     }
@@ -90,10 +134,11 @@ function ViewTicket() {
             <i className="fa fa-comments" aria-hidden="true"></i> Comments:
           </h3>
           <div className="commentArea">
-            {selectedTicket.comments.map((comment) => {
-              const commentBy = allUsers.filter(
-                (user) => user.id === +comment.id
-              );
+            {selectedTicket.comments.map((comment: { id: number , comment: string}) => {
+              
+              const commentBy: { id: number, img: string, firstname: string, lastname: string } = allUsers.filter(
+                (user: { id: number }) => user.id === +comment.id
+              )[0];
 
               return (
                 <div
@@ -101,18 +146,18 @@ function ViewTicket() {
                   key={selectedTicket.id + Math.random()}
                 >
                   <div className="commentImage">
-                    {commentBy.length > 0 ? (
+                    {commentBy ? (
                       <Link to={`/user/view/${comment.id}`}>
-                        <img src={`${commentBy[0].img}`} alt="user who made the comment"/>
+                        <img src={`${commentBy.img}`} alt="user who made the comment" />
                       </Link>
                     ) : (
-                      <img src={'https://jezblackmore.com/jtask/fakeUsers/deleted.png'} alt="deleted user"/>
+                      <img src={'https://jezblackmore.com/jtask/fakeUsers/deleted.png'} alt="deleted user" />
                     )}
                   </div>
                   <div className="commentMeta">
-                    {commentBy.length > 0 ? (
+                    {commentBy ? (
                       <p>
-                        <strong>{`${commentBy[0].firstname} ${commentBy[0].lastname}`}</strong>
+                        <strong>{`${commentBy.firstname} ${commentBy.lastname}`}</strong>
                       </p>
                     ) : (
                       <p>
@@ -120,7 +165,7 @@ function ViewTicket() {
                       </p>
                     )}
 
-                    <p>{comment.comment}</p>
+                    <p>{comment.comment || ""}</p>
                   </div>
                   <p></p>
                 </div>
@@ -132,8 +177,8 @@ function ViewTicket() {
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
                 placeholder="Add a note about this ticket"
-                cols="30"
-                rows="5"
+                cols={30}
+                rows={5}
                 required
               ></textarea>
               <button className="btn" type="submit">

@@ -2,19 +2,27 @@ import React, { useContext } from "react";
 import Context from "../../contexts/Context";
 import { Link } from "react-router-dom";
 
-function ViewAllUsers() {
+type useObj = {
+  id: string,
+  firstname: string,
+  lastname: string,
+  email: string
+  img: string
+}
+
+const ViewAllUsers: React.FC = () => {
   const { allUsers, setAllUsers, setSelectedUser, loggedInUser, setLoggedInUser, allTickets, setAllTickets } = useContext(Context);
 
-  const removeUser = (id) => {
-    const user = allUsers.find(user => user.id === id);
+  const removeUser = (id: any) => {
+    const user = allUsers.find((user: { id: string}) => user.id === id);
     if(+user.role === 1){
       return alert("You are not able to delete an admin account")
     }
-    const existingUsers = allUsers.filter((user) => user.id !== id);
+    const existingUsers = allUsers.filter((user: { id: string}) => user.id !== id);
     setAllUsers([...existingUsers]);
     localStorage.setItem('allUsers', JSON.stringify([...existingUsers]));
     
-    const assignDeleteUsersTicketsToAdmin = allTickets.map(ticket => {
+    const assignDeleteUsersTicketsToAdmin = allTickets.map((ticket: { assignedTo: number}) => {
       if( +ticket.assignedTo === +user.id){
         ticket.assignedTo = 1
       }
@@ -41,7 +49,7 @@ function ViewAllUsers() {
         </Link>
       </div>
       <div>
-        {allUsers.map((user) => {
+        {allUsers.map((user: useObj) => {
           return (
             <div className="addedUser" key={user.id}>
               <div className="addUserImage">

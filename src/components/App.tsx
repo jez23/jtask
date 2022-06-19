@@ -1,27 +1,13 @@
 import React, { Suspense } from 'react';
 import { ConstProvider } from '../contexts/Context';
 import {Route, Switch} from "react-router-dom";
-import RequireAuth from "../components/RequireAuth";
+import RequireAuth from "./RequireAuth";
 
 
 import '../css/imports.css';
 
 import Header from './header/Header';
 import SideNav from "./SideNav";
-import Error404 from './pages/Error404';
-
-/* const DashBoardOverViewSection = React.lazy(() => import('./pages/DashBoardOverView'));
-const NewTicket = React.lazy(() => import('./pages/NewTicket'));
-const EditTicket = React.lazy(() => import('./pages/EditTicket'));
-const OnHold = React.lazy(() => import('./pages/OnHold'));
-const BackLog = React.lazy(() => import('./pages/BackLog'));
-const ViewTicket = React.lazy(() => import('./pages/ViewTicket'));
-const ViewAllUsers = React.lazy(() => import('./pages/ViewAllUsers'));
-const SearchResults = React.lazy(() => import('./pages/SearchResults'));
-const AddNewUser = React.lazy(() => import('./pages/AddNewUser'));
-const EditUser = React.lazy(() => import('./pages/EditUser'));
-const ViewUser = React.lazy(() => import('./pages/ViewUser'));
-const Login  = React.lazy(() => import( './pages/Login')); */
 
 import DashBoardOverViewSection  from './pages/DashBoardOverView';
 import NewTicket from './pages/NewTicket';
@@ -36,7 +22,7 @@ import EditUser from './pages/EditUser';
 import ViewUser from './pages/ViewUser';
 import Login  from './pages/Login';
 
-function App() {
+const App: React.FC = () => {
   return (
       <ConstProvider>
          <Suspense

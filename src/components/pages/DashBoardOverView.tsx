@@ -10,8 +10,9 @@ const lists = [
   { title: "Closed" },
 ];
 
-const DashBoardOverView = () => {
-  const [draggable_id, setDraggable_id] = useState("");
+
+const DashBoardOverView: React.FC = () => {
+  const [draggable_id, setDraggable_id] = useState<any>("");
 
   return (
     <div className="center90">

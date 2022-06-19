@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Unauthorised = () => {
+const Unauthorised: React.FC = () => {
   return (
     <div className="container-center">
       <div className="center60 centerContent">

@@ -3,7 +3,7 @@ import Context from "../../contexts/Context";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-const Account = () => {
+const Account: React.FC = () => {
 
     const { loggedInUser, setLoggedInUser } = useContext(Context);
     const history = useHistory();
