@@ -13,22 +13,16 @@ type updatedUser = {
   email: string;
   img: string;
   role: string;
-}
+};
 
 const EditUser: React.FC = () => {
   const { allUsers, setAllUsers } = useContext(Context);
 
   const { user_id } = useParams<UserParams>();
 
-  const [selectedUser, setSelectedUser] = useState<updatedUser>({
-    id: 0,
-    firstname: "",
-    lastname: "",
-    jobTitle: "",
-    email: "",
-    img: "",
-    role: "",
-  });
+  const [selectedUser, setSelectedUser] = useState<updatedUser>(
+    {} as updatedUser
+  );
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [jobTitle, setJobTitle] = useState<string>("");
@@ -47,17 +41,19 @@ const EditUser: React.FC = () => {
       role: selectedUser.role,
     };
     const IndexOfUserToUpdate: number = allUsers.findIndex(
-      (user: any ) => user.id === selectedUser.id
+      (user: any) => user.id === selectedUser.id
     )[0];
     const allUsersCopy: any[] = [...allUsers];
     allUsersCopy.splice(+IndexOfUserToUpdate, 1, updatedUser);
 
-    localStorage.setItem('allUsers', JSON.stringify([...allUsersCopy]));
+    localStorage.setItem("allUsers", JSON.stringify([...allUsersCopy]));
     setAllUsers(allUsersCopy);
   };
 
   useEffect(() => {
-    const chosen = allUsers.filter((user: { id: number }) => user.id === +user_id);
+    const chosen = allUsers.filter(
+      (user: { id: number }) => user.id === +user_id
+    );
 
     setFirstName(chosen[0].firstname);
     setLastName(chosen[0].lastname);

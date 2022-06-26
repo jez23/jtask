@@ -10,25 +10,25 @@ type TicketParams = {
 
 type ticketObj = {
   comments: {
-    id: any
-    comment: any
-  }[],
-  id: string,
-  title: string,
-  firstname: string,
-  lastname: string,
-  type: string,
-  priority: string,
-  status: string,
-  points: string,
-  summary: string,
-}
+    id: any;
+    comment: any;
+  }[];
+  id: string;
+  title: string;
+  firstname: string;
+  lastname: string;
+  type: string;
+  priority: string;
+  status: string;
+  points: string;
+  summary: string;
+};
 
 type AssignedUserObj = {
-  id: string,
-  firstname: string,
-  lastname: string
-}
+  id: string;
+  firstname: string;
+  lastname: string;
+};
 
 const ViewTicket: React.FC = () => {
   const { ticket_id } = useParams<TicketParams>();
@@ -37,26 +37,12 @@ const ViewTicket: React.FC = () => {
     useContext(Context);
 
   const [comment, setComment] = useState<string>("");
-  const [assignedUser, setAssignedUser] = useState<AssignedUserObj>({
-    id: "",
-    firstname: "",
-    lastname: ""
-  });
-  const [selectedTicket, setSelectedTicket] = useState<ticketObj>({
-    comments: [{
-      id: "",
-      comment: ""
-    }],
-    id: "",
-    title: "",
-    firstname: "",
-    lastname: "",
-    type: "",
-    priority: "",
-    status: "",
-    points: "",
-    summary: ""
-  });
+  const [assignedUser, setAssignedUser] = useState<AssignedUserObj>(
+    {} as AssignedUserObj
+  );
+  const [selectedTicket, setSelectedTicket] = useState<ticketObj>(
+    {} as ticketObj
+  );
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -134,43 +120,57 @@ const ViewTicket: React.FC = () => {
             <i className="fa fa-comments" aria-hidden="true"></i> Comments:
           </h3>
           <div className="commentArea">
-            {selectedTicket.comments.map((comment: { id: number , comment: string}) => {
-              
-              const commentBy: { id: number, img: string, firstname: string, lastname: string } = allUsers.filter(
-                (user: { id: number }) => user.id === +comment.id
-              )[0];
+            {selectedTicket.comments.map(
+              (comment: { id: number; comment: string }) => {
+                const commentBy: {
+                  id: number;
+                  img: string;
+                  firstname: string;
+                  lastname: string;
+                } = allUsers.filter(
+                  (user: { id: number }) => user.id === +comment.id
+                )[0];
 
-              return (
-                <div
-                  className="commentContainer"
-                  key={selectedTicket.id + Math.random()}
-                >
-                  <div className="commentImage">
-                    {commentBy ? (
-                      <Link to={`/user/view/${comment.id}`}>
-                        <img src={`${commentBy.img}`} alt="user who made the comment" />
-                      </Link>
-                    ) : (
-                      <img src={'https://jezblackmore.com/jtask/fakeUsers/deleted.png'} alt="deleted user" />
-                    )}
-                  </div>
-                  <div className="commentMeta">
-                    {commentBy ? (
-                      <p>
-                        <strong>{`${commentBy.firstname} ${commentBy.lastname}`}</strong>
-                      </p>
-                    ) : (
-                      <p>
-                        <strong>Deleted user</strong>
-                      </p>
-                    )}
+                return (
+                  <div
+                    className="commentContainer"
+                    key={selectedTicket.id + Math.random()}
+                  >
+                    <div className="commentImage">
+                      {commentBy ? (
+                        <Link to={`/user/view/${comment.id}`}>
+                          <img
+                            src={`${commentBy.img}`}
+                            alt="user who made the comment"
+                          />
+                        </Link>
+                      ) : (
+                        <img
+                          src={
+                            "https://jezblackmore.com/jtask/fakeUsers/deleted.png"
+                          }
+                          alt="deleted user"
+                        />
+                      )}
+                    </div>
+                    <div className="commentMeta">
+                      {commentBy ? (
+                        <p>
+                          <strong>{`${commentBy.firstname} ${commentBy.lastname}`}</strong>
+                        </p>
+                      ) : (
+                        <p>
+                          <strong>Deleted user</strong>
+                        </p>
+                      )}
 
-                    <p>{comment.comment || ""}</p>
+                      <p>{comment.comment || ""}</p>
+                    </div>
+                    <p></p>
                   </div>
-                  <p></p>
-                </div>
-              );
-            })}
+                );
+              }
+            )}
 
             <form onSubmit={handleSubmit}>
               <textarea
@@ -194,6 +194,6 @@ const ViewTicket: React.FC = () => {
       )}
     </>
   );
-}
+};
 
 export default ViewTicket;
